@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AlquiTech – Registro</title>
+  <link rel="stylesheet" href="../CSS/style.css"/>
+  <link rel="stylesheet" href="../JS/scripts.js">
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <header>
+    <strong>AlquiTech</strong>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="inmuebles.html">Inmuebles</a>
+      <a href="index.html#funcionalidades">¿Cómo funciona?</a>
+      <a href="#">Contacto</a>
+    </nav>
+    <div class="acceso">
+      <a href="login.html">Iniciar sesión</a>
+      <a href="registro.html">Registrarse</a>
+    </div>
+  </header>
+
+  <!-- FORMULARIO DE REGISTRO -->
+  <section class="formulario-contenedor">
+    <h2>Crear cuenta</h2>
+    <p>Rellena los datos para registrarte en AlquiTech.</p>
+
+    <form id="formulario-registro">
+
+      <div class="grupo-campo">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre"/>
+        <span class="error" id="error-nombre"></span>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos"/>
+        <span class="error" id="error-apellidos"></span>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com"/>
+        <span class="error" id="error-email"></span>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="telefono">Teléfono (opcional)</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="600 000 000"/>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" name="dni" placeholder="12345678A"/>
+        <span class="error" id="error-dni"></span>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" name="contrasena" placeholder="Mínimo 6 caracteres"/>
+        <span class="error" id="error-contrasena"></span>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="confirmar-contrasena">Confirmar contraseña</label>
+        <input type="password" id="confirmar-contrasena" name="confirmar-contrasena" placeholder="Repite tu contraseña"/>
+        <span class="error" id="error-confirmar-contrasena"></span>
+      </div>
+
+      <div class="grupo-campo">
+        <label>Tipo de usuario</label>
+        <div class="grupo-radio">
+          <label>
+            <input type="radio" name="rol" value="propietario"/> Propietario
+          </label>
+          <label>
+            <input type="radio" name="rol" value="inquilino"/> Inquilino
+          </label>
+        </div>
+        <span class="error" id="error-rol"></span>
+      </div>
+
+      <button type="submit">Crear cuenta</button>
+
+      <p class="enlace-acceso">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+
+    </form>
+  </section>
+
+  <!-- PIE DE PAGINA -->
+  <footer>
+    <strong>AlquiTech</strong>
+    <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+    <div>
+      <a href="#">Aviso legal</a>
+      <a href="#">Privacidad</a>
+      <a href="#">Contacto</a>
+    </div>
+  </footer>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

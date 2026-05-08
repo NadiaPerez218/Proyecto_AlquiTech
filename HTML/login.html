@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AlquiTech – Iniciar sesión</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <header>
+    <strong>AlquiTech</strong>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="inmuebles.html">Inmuebles</a>
+      <a href="index.html#funcionalidades">Cómo funciona</a>
+      <a href="#">Contacto</a>
+    </nav>
+    <div class="acceso">
+      <a href="login.html">Iniciar sesión</a>
+      <a href="registro.html">Registrarse</a>
+    </div>
+  </header>
+
+  <!-- FORMULARIO DE LOGIN -->
+  <section class="formulario-contenedor">
+    <h2>Iniciar sesión</h2>
+    <p>Introduce tus datos para acceder a tu cuenta.</p>
+
+    <form id="formulario-login">
+
+      <div class="grupo-campo">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email-login" name="email" placeholder="correo@ejemplo.com"/>
+        <span class="error" id="error-email-login"></span>
+      </div>
+
+      <div class="grupo-campo">
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena-login" name="contrasena" placeholder="Tu contraseña"/>
+        <span class="error" id="error-contrasena-login"></span>
+      </div>
+
+      <button type="submit">Entrar</button>
+
+      <p class="enlace-acceso">¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>
+
+    </form>
+  </section>
+
+  <!-- PIE DE PAGINA -->
+  <footer>
+    <strong>AlquiTech</strong>
+    <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+    <div>
+      <a href="#">Aviso legal</a>
+      <a href="#">Privacidad</a>
+      <a href="#">Contacto</a>
+    </div>
+  </footer>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>
