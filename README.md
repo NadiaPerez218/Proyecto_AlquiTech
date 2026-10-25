@@ -26,6 +26,7 @@ Cada versión vive en su propia carpeta, para conservar el historial de cómo ha
 |---|---|
 | [`v0.0`](v0.0) | Prototipado temprano: código de prueba de la fase inicial de desarrollo. |
 | [`v0.1`](v0.1) | Frontend con el diseño real de los mockups: 6 páginas, estilos de la guía de estilo definitiva y validación de formularios con JavaScript. |
+| [`v0.2`](v0.2) | Añade la página de detalle de inmueble, a la que se llega desde el catálogo. |
 
 ### Estructura de cada versión
 
@@ -40,7 +41,7 @@ vX.X/
 
 ---
 
-## Páginas de la versión actual (v0.1)
+## Páginas de la versión actual (v0.2)
 
 - **Inicio** (`index.html`): presentación de AlquiTech, funcionalidades y roles.
 - **Registro** (`registro.html`): alta de propietario o inquilino con validación.
@@ -48,12 +49,13 @@ vX.X/
 - **Inmuebles** (`inmuebles.html`): catálogo con filtros por ciudad y precio.
 - **Panel del propietario** (`dashboard-propietario.html`).
 - **Panel del inquilino** (`dashboard-inquilino.html`).
+- **Detalle de inmueble** (`detalle-inmueble.html`), nueva en la v0.2.
 
 ---
 
 ## Tecnologías
 
-**Frontend (v0.1):** HTML5, CSS3 y JavaScript sin librerías. Tipografías Montserrat (títulos) y Lato (texto) de Google Fonts.
+**Frontend (v0.2):** HTML5, CSS3 y JavaScript sin librerías. Tipografías Montserrat (títulos) y Lato (texto) de Google Fonts.
 
 **Previstas para la siguiente fase:** base de datos MySQL, con autenticación segura.
 
