@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     PANEL DEL PROPIETARIO (dashboard-propietario.html)
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y botón de cerrar sesión)
+     2. Contenido principal
+        2.1 Tarjetas de resumen
+        2.2 Mis inmuebles
+        2.3 Últimos pagos
+        2.4 Últimas incidencias
+        2.5 Mensajes recientes
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Dashboard Propietario</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-propietario.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a class="activo" href="dashboard-propietario.html">Inicio</a>
+        <a href="mis-inmuebles.html">Mis inmuebles</a>
+        <a href="#">Contratos</a>
+        <a href="#">Pagos</a>
+        <a href="#">Incidencias</a>
+        <a href="#">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y botón -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Propietario</strong></span>
+        <a class="boton boton-contorno" href="index.html">Cerrar sesión</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard" id="dashboard-propietario">
+
+    <h1>Panel del propietario</h1>
+
+    <!-- 2.1 TARJETAS DE RESUMEN -->
+    <section class="resumen">
+
+      <div class="tarjeta-resumen">
+        <h3>Inmuebles</h3>
+        <p class="cifra">3</p>
+        <p class="descripcion">inmuebles publicados</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Contratos activos</h3>
+        <p class="cifra">2</p>
+        <p class="descripcion">contratos en vigor</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Pagos pendientes</h3>
+        <p class="cifra">1</p>
+        <p class="descripcion">pagos sin confirmar</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Incidencias abiertas</h3>
+        <p class="cifra">2</p>
+        <p class="descripcion">incidencias sin resolver</p>
+      </div>
+
+    </section>
+
+    <!-- 2.2 MIS INMUEBLES -->
+    <section class="seccion-dashboard">
+      <div class="cabecera-seccion">
+        <h3>Mis inmuebles</h3>
+        <a href="publicar-inmueble.html">+ Añadir inmueble</a>
+      </div>
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Ciudad</th>
+              <th>Precio mensual</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Piso en el centro</td>
+              <td>Madrid</td>
+              <td>950 €</td>
+              <td><span class="insignia insignia-ok">Alquilado</span></td>
+              <td><a href="detalle-inmueble.html?id=1">Ver</a><a href="#">Editar</a></td>
+            </tr>
+            <tr>
+              <td>Apartamento luminoso</td>
+              <td>Barcelona</td>
+              <td>1.100 €</td>
+              <td><span class="insignia insignia-contorno">Disponible</span></td>
+              <td><a href="detalle-inmueble.html?id=2">Ver</a><a href="#">Editar</a></td>
+            </tr>
+            <tr>
+              <td>Estudio reformado</td>
+              <td>Valencia</td>
+              <td>650 €</td>
+              <td><span class="insignia insignia-ok">Alquilado</span></td>
+              <td><a href="detalle-inmueble.html?id=3">Ver</a><a href="#">Editar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.3 ÚLTIMOS PAGOS -->
+    <section class="seccion-dashboard">
+      <div class="cabecera-seccion">
+        <h3>Últimos pagos</h3>
+        <a href="#">Ver todos</a>
+      </div>
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Inquilino</th>
+              <th>Inmueble</th>
+              <th>Importe</th>
+              <th>Vencimiento</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Juan García</td>
+              <td>Piso en el centro</td>
+              <td>950 €</td>
+              <td>01/05/2026</td>
+              <td><span class="insignia insignia-ok">Pagado</span></td>
+            </tr>
+            <tr>
+              <td>María López</td>
+              <td>Estudio reformado</td>
+              <td>650 €</td>
+              <td>01/05/2026</td>
+              <td><span class="insignia insignia-contorno">Pendiente</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.4 ÚLTIMAS INCIDENCIAS -->
+    <section class="seccion-dashboard">
+      <div class="cabecera-seccion">
+        <h3>Últimas incidencias</h3>
+        <a href="#">Ver todas</a>
+      </div>
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Inmueble</th>
+              <th>Prioridad</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gotera en el baño</td>
+              <td>Piso en el centro</td>
+              <td><span class="insignia insignia-alta">Alta</span></td>
+              <td><span class="insignia insignia-contorno">Abierta</span></td>
+              <td>02/05/2026</td>
+            </tr>
+            <tr>
+              <td>Calefacción averiada</td>
+              <td>Estudio reformado</td>
+              <td><span class="insignia insignia-contorno">Media</span></td>
+              <td><span class="insignia insignia-contorno">Abierta</span></td>
+              <td>04/05/2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.5 MENSAJES RECIENTES -->
+    <section class="seccion-dashboard">
+      <div class="cabecera-seccion">
+        <h3>Mensajes recientes</h3>
+        <a href="#">Ver todos</a>
+      </div>
+      <ul class="lista-mensajes">
+        <li class="mensaje">
+          <div class="mensaje-cabecera">
+            <strong>Juan García</strong>
+            <span class="fecha-mensaje">02/05/2026</span>
+          </div>
+          <p>Buenos días, ¿podría revisar la gotera del baño esta semana?</p>
+        </li>
+        <li class="mensaje">
+          <div class="mensaje-cabecera">
+            <strong>María López</strong>
+            <span class="fecha-mensaje">04/05/2026</span>
+          </div>
+          <p>Hola, la calefacción sigue sin funcionar correctamente.</p>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

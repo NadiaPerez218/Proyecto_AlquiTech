@@ -29,6 +29,7 @@ Cada versión vive en su propia carpeta, para conservar el historial de cómo ha
 | [`v0.2`](v0.2) | Añade la página de detalle de inmueble, a la que se llega desde el catálogo. |
 | [`v0.3`](v0.3) | Añade el formulario de publicar inmueble del propietario, con validación. |
 | [`v0.4`](v0.4) | Añade el listado "Mis inmuebles" del propietario. |
+| [`v0.5`](v0.5) | Añade las pantallas del inquilino: mi contrato, pagos, incidencias (listado y formulario) y mensajes. |
 
 ### Estructura de cada versión
 
@@ -43,7 +44,7 @@ vX.X/
 
 ---
 
-## Páginas de la versión actual (v0.4)
+## Páginas de la versión actual (v0.5)
 
 - **Inicio** (`index.html`): presentación de AlquiTech, funcionalidades y roles.
 - **Registro** (`registro.html`): alta de propietario o inquilino con validación.
@@ -54,12 +55,17 @@ vX.X/
 - **Detalle de inmueble** (`detalle-inmueble.html`), nueva en la v0.2.
 - **Publicar inmueble** (`publicar-inmueble.html`), nueva en la v0.3.
 - **Mis inmuebles** (`mis-inmuebles.html`), nueva en la v0.4.
+- **Mi contrato** (`mi-contrato.html`), nueva en la v0.5.
+- **Pagos del inquilino** (`pagos-inquilino.html`), nueva en la v0.5.
+- **Incidencias del inquilino** (`incidencias-inquilino.html`), nueva en la v0.5.
+- **Nueva incidencia** (`nueva-incidencia.html`), nueva en la v0.5.
+- **Mensajes del inquilino** (`mensajes-inquilino.html`), nueva en la v0.5.
 
 ---
 
 ## Tecnologías
 
-**Frontend (v0.4):** HTML5, CSS3 y JavaScript sin librerías. Tipografías Montserrat (títulos) y Lato (texto) de Google Fonts.
+**Frontend (v0.5):** HTML5, CSS3 y JavaScript sin librerías. Tipografías Montserrat (títulos) y Lato (texto) de Google Fonts.
 
 **Previstas para la siguiente fase:** base de datos MySQL, con autenticación segura.
 
@@ -78,6 +84,9 @@ No hace falta instalar nada.
 
 - [x] Prototipo inicial (v0.0)
 - [x] Diseño de pantallas y frontend con el diseño real (v0.1)
-- [ ] Resto de páginas (detalle de inmueble, contratos, pagos, incidencias…)
+- [x] Detalle de inmueble, publicar inmueble y mis inmuebles (v0.2 a v0.4)
+- [x] Pantallas del inquilino: contrato, pagos, incidencias y mensajes (v0.5)
+- [ ] Pantallas del propietario: contratos, pagos, incidencias y mensajes
+- [ ] Páginas de aviso legal, privacidad y contacto
 - [ ] Conexión con el backend y la base de datos
 - [ ] Despliegue

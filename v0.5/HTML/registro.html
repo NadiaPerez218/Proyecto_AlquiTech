@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     PÁGINA DE REGISTRO (registro.html)
+
+     BLOQUES:
+     1. Cabecera (logo, menú y botones)
+     2. Formulario de registro
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Registro</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="inmuebles.html">Inmuebles</a>
+        <a href="index.html#funcionalidades">¿Cómo funciona?</a>
+        <a href="#">Contacto</a>
+      </nav>
+
+      <!-- Botones -->
+      <div class="acceso">
+        <a class="boton boton-contorno" href="login.html">Iniciar sesión</a>
+        <a class="boton boton-blanco" href="registro.html">Registrarse</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. FORMULARIO DE REGISTRO ==================== -->
+  <main class="pagina-formulario">
+
+    <section class="formulario-contenedor">
+      <h1>Crear cuenta</h1>
+      <p class="subtitulo">Rellena los campos para registrarte en AlquiTech.</p>
+      <hr class="separador">
+
+      <!-- novalidate: el navegador no muestra sus avisos; se usan los mensajes de nuestro JavaScript -->
+      <form id="formulario-registro" novalidate>
+
+        <!-- Nombre -->
+        <div class="grupo-campo">
+          <label for="nombre">Nombre</label>
+          <input class="caja-texto" type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+          <span class="error" id="error-nombre"></span>
+        </div>
+
+        <!-- Apellidos -->
+        <div class="grupo-campo">
+          <label for="apellidos">Apellidos</label>
+          <input class="caja-texto" type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos">
+          <span class="error" id="error-apellidos"></span>
+        </div>
+
+        <!-- Correo electrónico -->
+        <div class="grupo-campo">
+          <label for="email">Correo electrónico</label>
+          <input class="caja-texto" type="email" id="email" name="email" placeholder="correo@ejemplo.com">
+          <span class="error" id="error-email"></span>
+        </div>
+
+        <!-- Teléfono (opcional) -->
+        <div class="grupo-campo">
+          <label for="telefono">Teléfono (opcional)</label>
+          <input class="caja-texto" type="tel" id="telefono" name="telefono" placeholder="600 00 00 00">
+          <span class="error" id="error-telefono"></span>
+        </div>
+
+        <!-- DNI -->
+        <div class="grupo-campo">
+          <label for="dni">DNI</label>
+          <input class="caja-texto" type="text" id="dni" name="dni" placeholder="12345678A">
+          <span class="error" id="error-dni"></span>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="grupo-campo">
+          <label for="contrasena">Contraseña</label>
+          <input class="caja-texto" type="password" id="contrasena" name="contrasena" placeholder="Mínimo 6 caracteres">
+          <span class="error" id="error-contrasena"></span>
+        </div>
+
+        <!-- Confirmar contraseña -->
+        <div class="grupo-campo">
+          <label for="confirmar-contrasena">Confirmar contraseña</label>
+          <input class="caja-texto" type="password" id="confirmar-contrasena" name="confirmar-contrasena" placeholder="Repite tu contraseña">
+          <span class="error" id="error-confirmar-contrasena"></span>
+        </div>
+
+        <hr class="separador">
+
+        <!-- Tipo de usuario -->
+        <fieldset class="grupo-campo">
+          <legend class="etiqueta-campo">Tipo de usuario</legend>
+          <div class="grupo-radio">
+            <label>
+              <input type="radio" name="rol" value="propietario"> Propietario
+            </label>
+            <label>
+              <input type="radio" name="rol" value="inquilino"> Inquilino
+            </label>
+          </div>
+          <span class="error" id="error-rol"></span>
+        </fieldset>
+
+        <!-- Botón y enlace al login -->
+        <button type="submit" class="boton boton-primario boton-bloque">Crear cuenta</button>
+
+        <p class="enlace-acceso">¿Ya tienes cuenta? <a href="login.html">Iniciar sesión</a></p>
+
+      </form>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

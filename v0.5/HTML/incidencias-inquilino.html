@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     INCIDENCIAS DEL INQUILINO (incidencias-inquilino.html)
+
+     Listado de las incidencias (averías o problemas) del inquilino.
+     Se llega desde el menú del panel del inquilino ("Incidencias")
+     o desde el enlace "+ Nueva incidencia" / "Mis incidencias".
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y botón de cerrar sesión)
+     2. Contenido principal
+        2.1 Título y botón de nueva incidencia
+        2.2 Tarjetas de resumen
+        2.3 Tabla de incidencias
+        2.4 Mensaje de "no hay incidencias"
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Incidencias</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-inquilino.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="dashboard-inquilino.html">Inicio</a>
+        <a href="mi-contrato.html">Mi contrato</a>
+        <a href="pagos-inquilino.html">Pagos</a>
+        <a class="activo" href="incidencias-inquilino.html">Incidencias</a>
+        <a href="mensajes-inquilino.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y botón -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Inquilino</strong></span>
+        <a class="boton boton-contorno" href="index.html">Cerrar sesión</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard" id="incidencias-inquilino">
+
+    <!-- 2.1 TÍTULO Y BOTÓN DE NUEVA INCIDENCIA -->
+    <div class="cabecera-pagina">
+      <h1>Incidencias</h1>
+      <a class="boton boton-primario" href="nueva-incidencia.html">+ Nueva incidencia</a>
+    </div>
+
+    <!-- 2.2 TARJETAS DE RESUMEN -->
+    <section class="resumen">
+
+      <div class="tarjeta-resumen">
+        <h3>Abiertas</h3>
+        <p class="cifra">1</p>
+        <p class="descripcion">incidencia sin resolver</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>En curso</h3>
+        <p class="cifra">1</p>
+        <p class="descripcion">se está resolviendo</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Resueltas</h3>
+        <p class="cifra">1</p>
+        <p class="descripcion">incidencia solucionada</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Total</h3>
+        <p class="cifra">3</p>
+        <p class="descripcion">desde el inicio del contrato</p>
+      </div>
+
+    </section>
+
+    <!-- 2.3 TABLA DE INCIDENCIAS -->
+    <section class="seccion-dashboard" id="seccion-tabla-incidencias">
+      <div class="cabecera-seccion">
+        <h3>Mis incidencias</h3>
+      </div>
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Categoría</th>
+              <th>Prioridad</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo-tabla-incidencias">
+
+            <!-- Pendiente: "Ver" todavía no tiene página (el detalle de la incidencia) -->
+            <tr>
+              <td>Gotera en el baño</td>
+              <td>Fontanería</td>
+              <td><span class="insignia insignia-alta">Alta</span></td>
+              <td><span class="insignia insignia-contorno">Abierta</span></td>
+              <td>02/05/2026</td>
+              <td><a href="#">Ver</a></td>
+            </tr>
+            <tr>
+              <td>Persiana del salón atascada</td>
+              <td>Carpintería</td>
+              <td><span class="insignia insignia-contorno">Media</span></td>
+              <td><span class="insignia insignia-contorno">En curso</span></td>
+              <td>18/03/2026</td>
+              <td><a href="#">Ver</a></td>
+            </tr>
+            <tr>
+              <td>Bombilla del pasillo fundida</td>
+              <td>Electricidad</td>
+              <td><span class="insignia insignia-contorno">Baja</span></td>
+              <td><span class="insignia insignia-ok">Resuelta</span></td>
+              <td>10/02/2026</td>
+              <td><a href="#">Ver</a></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.4 MENSAJE DE "NO HAY INCIDENCIAS" (se enseña desde el JavaScript si la tabla está vacía) -->
+    <p id="sin-incidencias" class="sin-resultados" style="display:none;">
+      Todavía no has enviado ninguna incidencia.
+    </p>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>
