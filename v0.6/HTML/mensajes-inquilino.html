@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     MENSAJES DEL INQUILINO (mensajes-inquilino.html)
+
+     Conversación del inquilino con el propietario de su inmueble.
+     Se llega desde el menú del panel del inquilino ("Mensajes")
+     o desde el enlace "Ver todos" de "Mensajes recientes".
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y botón de cerrar sesión)
+     2. Contenido principal
+        2.1 Título
+        2.2 Conversación
+            - Datos de la conversación
+            - Mensajes
+            - Formulario para escribir un mensaje nuevo
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Mensajes</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-inquilino.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="dashboard-inquilino.html">Inicio</a>
+        <a href="mi-contrato.html">Mi contrato</a>
+        <a href="pagos-inquilino.html">Pagos</a>
+        <a href="incidencias-inquilino.html">Incidencias</a>
+        <a class="activo" href="mensajes-inquilino.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y botón -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Inquilino</strong></span>
+        <a class="boton boton-contorno" href="index.html">Cerrar sesión</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard pagina-estrecha" id="mensajes-inquilino">
+
+    <!-- 2.1 TÍTULO -->
+    <h1>Mensajes</h1>
+
+    <!-- 2.2 CONVERSACIÓN -->
+    <section class="chat">
+
+      <!-- Datos de la conversación -->
+      <div class="chat-cabecera">
+        <h3>Carlos Martínez</h3>
+        <p>Propietario · Piso en el centro, Madrid</p>
+      </div>
+
+      <!-- Mensajes: "burbuja-recibida" son los del propietario y "burbuja-enviada" los del inquilino.
+           Los mensajes nuevos se añaden al final desde el JavaScript. -->
+      <div class="chat-mensajes" id="chat-mensajes">
+
+        <div class="burbuja burbuja-enviada">
+          <p>Buenos días, ¿podría revisar la gotera del baño esta semana?</p>
+          <span class="fecha-mensaje">02/05/2026</span>
+        </div>
+
+        <div class="burbuja burbuja-recibida">
+          <p>He recibido tu incidencia, en breve me pongo en contacto contigo.</p>
+          <span class="fecha-mensaje">03/05/2026</span>
+        </div>
+
+        <div class="burbuja burbuja-recibida">
+          <p>Buenos días, esta semana pasaré a revisar la gotera del baño.</p>
+          <span class="fecha-mensaje">05/05/2026</span>
+        </div>
+
+      </div>
+
+      <!-- Formulario para escribir un mensaje nuevo -->
+      <div class="chat-enviar">
+        <!-- novalidate: el navegador no muestra sus avisos; se usan los mensajes de nuestro JavaScript -->
+        <form id="formulario-mensaje" novalidate>
+
+          <div class="grupo-campo">
+            <label for="texto-mensaje">Escribe tu mensaje</label>
+            <textarea class="caja-texto caja-area" id="texto-mensaje" name="mensaje" placeholder="Escribe aquí tu mensaje para el propietario"></textarea>
+            <span class="error" id="error-texto-mensaje"></span>
+          </div>
+
+          <button type="submit" class="boton boton-primario">Enviar mensaje</button>
+
+        </form>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

@@ -30,6 +30,7 @@ Cada versión vive en su propia carpeta, para conservar el historial de cómo ha
 | [`v0.3`](v0.3) | Añade el formulario de publicar inmueble del propietario, con validación. |
 | [`v0.4`](v0.4) | Añade el listado "Mis inmuebles" del propietario. |
 | [`v0.5`](v0.5) | Añade las pantallas del inquilino: mi contrato, pagos, incidencias (listado y formulario) y mensajes. |
+| [`v0.6`](v0.6) | Añade las pantallas del propietario: contratos, pagos, incidencias y mensajes. |
 
 ### Estructura de cada versión
 
@@ -44,7 +45,7 @@ vX.X/
 
 ---
 
-## Páginas de la versión actual (v0.5)
+## Páginas de la versión actual (v0.6)
 
 - **Inicio** (`index.html`): presentación de AlquiTech, funcionalidades y roles.
 - **Registro** (`registro.html`): alta de propietario o inquilino con validación.
@@ -60,12 +61,16 @@ vX.X/
 - **Incidencias del inquilino** (`incidencias-inquilino.html`), nueva en la v0.5.
 - **Nueva incidencia** (`nueva-incidencia.html`), nueva en la v0.5.
 - **Mensajes del inquilino** (`mensajes-inquilino.html`), nueva en la v0.5.
+- **Contratos del propietario** (`contratos-propietario.html`), nueva en la v0.6.
+- **Pagos del propietario** (`pagos-propietario.html`), nueva en la v0.6.
+- **Incidencias del propietario** (`incidencias-propietario.html`), nueva en la v0.6.
+- **Mensajes del propietario** (`mensajes-propietario.html`), nueva en la v0.6.
 
 ---
 
 ## Tecnologías
 
-**Frontend (v0.5):** HTML5, CSS3 y JavaScript sin librerías. Tipografías Montserrat (títulos) y Lato (texto) de Google Fonts.
+**Frontend (v0.6):** HTML5, CSS3 y JavaScript sin librerías. Tipografías Montserrat (títulos) y Lato (texto) de Google Fonts.
 
 **Previstas para la siguiente fase:** base de datos MySQL, con autenticación segura.
 
@@ -86,7 +91,7 @@ No hace falta instalar nada.
 - [x] Diseño de pantallas y frontend con el diseño real (v0.1)
 - [x] Detalle de inmueble, publicar inmueble y mis inmuebles (v0.2 a v0.4)
 - [x] Pantallas del inquilino: contrato, pagos, incidencias y mensajes (v0.5)
-- [ ] Pantallas del propietario: contratos, pagos, incidencias y mensajes
+- [x] Pantallas del propietario: contratos, pagos, incidencias y mensajes (v0.6)
 - [ ] Páginas de aviso legal, privacidad y contacto
 - [ ] Conexión con el backend y la base de datos
 - [ ] Despliegue

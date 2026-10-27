@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     CONTRATOS DEL PROPIETARIO (contratos-propietario.html)
+
+     Listado de los contratos de alquiler de los inmuebles del propietario.
+     Se llega desde el menú del panel del propietario ("Contratos").
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y botón de cerrar sesión)
+     2. Contenido principal
+        2.1 Título
+        2.2 Tarjetas de resumen
+        2.3 Tabla de contratos
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Contratos</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-propietario.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="dashboard-propietario.html">Inicio</a>
+        <a href="mis-inmuebles.html">Mis inmuebles</a>
+        <a class="activo" href="contratos-propietario.html">Contratos</a>
+        <a href="pagos-propietario.html">Pagos</a>
+        <a href="incidencias-propietario.html">Incidencias</a>
+        <a href="mensajes-propietario.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y botón -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Propietario</strong></span>
+        <a class="boton boton-contorno" href="index.html">Cerrar sesión</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard" id="contratos-propietario">
+
+    <!-- 2.1 TÍTULO -->
+    <h1>Contratos</h1>
+
+    <!-- 2.2 TARJETAS DE RESUMEN -->
+    <section class="resumen">
+
+      <div class="tarjeta-resumen">
+        <h3>Contratos activos</h3>
+        <p class="cifra">2</p>
+        <p class="descripcion">contratos en vigor</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Ingresos al mes</h3>
+        <p class="cifra">1.600 €</p>
+        <p class="descripcion">suma de las cuotas</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Próximo fin</h3>
+        <p class="cifra cifra-fecha">31/12/2026</p>
+        <p class="descripcion">Piso en el centro</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Sin alquilar</h3>
+        <p class="cifra">1</p>
+        <p class="descripcion">inmueble disponible</p>
+      </div>
+
+    </section>
+
+    <!-- 2.3 TABLA DE CONTRATOS -->
+    <section class="seccion-dashboard">
+      <div class="cabecera-seccion">
+        <h3>Mis contratos</h3>
+      </div>
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Inmueble</th>
+              <th>Inquilino</th>
+              <th>Fecha inicio</th>
+              <th>Fecha fin</th>
+              <th>Cuota mensual</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- Pendiente: "Ver contrato" todavía no tiene página (el detalle del contrato) -->
+            <tr>
+              <td>Piso en el centro, Madrid</td>
+              <td>Juan García</td>
+              <td>01/01/2026</td>
+              <td>31/12/2026</td>
+              <td>950 €</td>
+              <td><span class="insignia insignia-ok">Activo</span></td>
+              <td><a href="#">Ver contrato</a></td>
+            </tr>
+            <tr>
+              <td>Estudio reformado, Valencia</td>
+              <td>María López</td>
+              <td>01/03/2026</td>
+              <td>28/02/2027</td>
+              <td>650 €</td>
+              <td><span class="insignia insignia-ok">Activo</span></td>
+              <td><a href="#">Ver contrato</a></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

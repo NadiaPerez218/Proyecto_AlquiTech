@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     MIS INMUEBLES (mis-inmuebles.html)
+
+     Listado de los inmuebles del propietario.
+     Se llega desde el menú del panel del propietario ("Mis inmuebles").
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y botón de cerrar sesión)
+     2. Contenido principal
+        2.1 Título y botón de añadir inmueble
+        2.2 Tabla de inmuebles
+        2.3 Mensaje de "no hay inmuebles"
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Mis inmuebles</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-propietario.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="dashboard-propietario.html">Inicio</a>
+        <a class="activo" href="mis-inmuebles.html">Mis inmuebles</a>
+        <a href="contratos-propietario.html">Contratos</a>
+        <a href="pagos-propietario.html">Pagos</a>
+        <a href="incidencias-propietario.html">Incidencias</a>
+        <a href="mensajes-propietario.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y botón -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Propietario</strong></span>
+        <a class="boton boton-contorno" href="index.html">Cerrar sesión</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard" id="mis-inmuebles">
+
+    <!-- 2.1 TÍTULO Y BOTÓN DE AÑADIR INMUEBLE -->
+    <div class="cabecera-pagina">
+      <h1>Mis inmuebles</h1>
+      <a class="boton boton-primario" href="publicar-inmueble.html">+ Añadir inmueble</a>
+    </div>
+
+    <!-- 2.2 TABLA DE INMUEBLES -->
+    <section class="seccion-dashboard" id="seccion-tabla-inmuebles">
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>Título</th>
+              <th>Ciudad</th>
+              <th>Precio mensual</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo-tabla-inmuebles">
+
+            <!-- "Ver" lleva al detalle del inmueble. "Editar" todavía no tiene página (pendiente). -->
+            <tr>
+              <td><img class="miniatura-inmueble" src="../IMG/piso-centro-madrid.png" alt="Piso en el centro"></td>
+              <td>Piso en el centro</td>
+              <td>Madrid</td>
+              <td>950 €</td>
+              <td><span class="insignia insignia-ok">Alquilado</span></td>
+              <td><a href="detalle-inmueble.html?id=1">Ver</a><a href="#">Editar</a></td>
+            </tr>
+
+            <tr>
+              <td><img class="miniatura-inmueble" src="../IMG/apartamento-luminoso-barcelona.png" alt="Apartamento luminoso"></td>
+              <td>Apartamento luminoso</td>
+              <td>Barcelona</td>
+              <td>1.100 €</td>
+              <td><span class="insignia insignia-contorno">Disponible</span></td>
+              <td><a href="detalle-inmueble.html?id=2">Ver</a><a href="#">Editar</a></td>
+            </tr>
+
+            <tr>
+              <td><img class="miniatura-inmueble" src="../IMG/estudio-reformado-valencia.png" alt="Estudio reformado"></td>
+              <td>Estudio reformado</td>
+              <td>Valencia</td>
+              <td>650 €</td>
+              <td><span class="insignia insignia-ok">Alquilado</span></td>
+              <td><a href="detalle-inmueble.html?id=3">Ver</a><a href="#">Editar</a></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.3 MENSAJE DE "NO HAY INMUEBLES" (se enseña desde el JavaScript si la tabla está vacía) -->
+    <p id="sin-inmuebles" class="sin-resultados" style="display:none;">
+      Todavía no has publicado ningún inmueble.
+    </p>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

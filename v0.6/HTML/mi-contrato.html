@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     MI CONTRATO (mi-contrato.html)
+
+     Contrato de alquiler del inquilino con todos sus datos.
+     Se llega desde el menú del panel del inquilino ("Mi contrato")
+     o desde el enlace "Ver contrato completo".
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y botón de cerrar sesión)
+     2. Contenido principal
+        2.1 Título y botón de descargar el contrato
+        2.2 Tarjetas de resumen
+        2.3 Datos del contrato
+        2.4 Condiciones principales
+        2.5 Documentos
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Mi contrato</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-inquilino.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="dashboard-inquilino.html">Inicio</a>
+        <a class="activo" href="mi-contrato.html">Mi contrato</a>
+        <a href="pagos-inquilino.html">Pagos</a>
+        <a href="incidencias-inquilino.html">Incidencias</a>
+        <a href="mensajes-inquilino.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y botón -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Inquilino</strong></span>
+        <a class="boton boton-contorno" href="index.html">Cerrar sesión</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard" id="mi-contrato">
+
+    <!-- Enlace para volver al panel -->
+    <a class="enlace-volver" href="dashboard-inquilino.html">← Volver al panel</a>
+
+    <!-- 2.1 TÍTULO Y BOTÓN DE DESCARGAR EL CONTRATO -->
+    <div class="cabecera-pagina">
+      <h1>Mi contrato</h1>
+      <!-- Pendiente: el archivo del contrato vendrá del backend -->
+      <a class="boton boton-primario" href="#">Descargar contrato</a>
+    </div>
+
+    <!-- 2.2 TARJETAS DE RESUMEN -->
+    <section class="resumen">
+
+      <div class="tarjeta-resumen">
+        <h3>Estado</h3>
+        <p class="cifra">Activo</p>
+        <p class="descripcion">hasta 31/12/2026</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Cuota mensual</h3>
+        <p class="cifra">950 €</p>
+        <p class="descripcion">se paga el día 1 de cada mes</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Fianza</h3>
+        <p class="cifra">950 €</p>
+        <p class="descripcion">una mensualidad</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Duración</h3>
+        <p class="cifra">12</p>
+        <p class="descripcion">meses de contrato</p>
+      </div>
+
+    </section>
+
+    <!-- 2.3 DATOS DEL CONTRATO -->
+    <section class="seccion-dashboard">
+      <div class="cabecera-seccion">
+        <h3>Datos del contrato</h3>
+        <a href="detalle-inmueble.html?id=1">Ver inmueble</a>
+      </div>
+      <div class="cuadricula-datos">
+        <p class="dato-reserva"><span>Inmueble</span> <strong>Piso en el centro</strong></p>
+        <p class="dato-reserva"><span>Ciudad</span> <strong>Madrid</strong></p>
+        <p class="dato-reserva"><span>Propietario</span> <strong>Carlos Martínez</strong></p>
+        <p class="dato-reserva"><span>Estado</span> <span class="insignia insignia-ok">Activo</span></p>
+        <p class="dato-reserva"><span>Fecha de inicio</span> <strong>01/01/2026</strong></p>
+        <p class="dato-reserva"><span>Fecha de fin</span> <strong>31/12/2026</strong></p>
+        <p class="dato-reserva"><span>Cuota mensual</span> <strong>950 €</strong></p>
+        <p class="dato-reserva"><span>Fianza</span> <strong>950 €</strong></p>
+      </div>
+    </section>
+
+    <!-- 2.4 CONDICIONES PRINCIPALES (texto de ejemplo) -->
+    <section class="seccion-dashboard">
+      <div class="cabecera-seccion">
+        <h3>Condiciones principales</h3>
+      </div>
+      <ul class="lista-condiciones">
+        <li><strong>Duración:</strong> 12 meses, desde el 01/01/2026 hasta el 31/12/2026.</li>
+        <li><strong>Pago de la renta:</strong> 950 € al mes, que se pagan antes del día 1 de cada mes.</li>
+        <li><strong>Fianza:</strong> equivale a una mensualidad y se devuelve al terminar el contrato si el inmueble está en buen estado.</li>
+        <li><strong>Avisos:</strong> para no renovar el contrato hay que avisar con 30 días de antelación.</li>
+        <li><strong>Averías:</strong> se comunican desde la sección de incidencias, y el propietario se encarga de las reparaciones importantes.</li>
+      </ul>
+    </section>
+
+    <!-- 2.5 DOCUMENTOS -->
+    <section class="seccion-dashboard">
+      <div class="cabecera-seccion">
+        <h3>Documentos</h3>
+      </div>
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Documento</th>
+              <th>Fecha</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Pendiente: las descargas vendrán del backend -->
+            <tr>
+              <td>Contrato de alquiler firmado</td>
+              <td>01/01/2026</td>
+              <td><a href="#">Descargar</a></td>
+            </tr>
+            <tr>
+              <td>Justificante de la fianza</td>
+              <td>28/12/2025</td>
+              <td><a href="#">Descargar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

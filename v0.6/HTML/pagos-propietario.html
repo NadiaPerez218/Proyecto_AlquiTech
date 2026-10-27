@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     PAGOS DEL PROPIETARIO (pagos-propietario.html)
+
+     Pagos que reciben los inmuebles del propietario (rentas mensuales).
+     Se llega desde el menú del panel del propietario ("Pagos")
+     o desde el enlace "Ver todos" de "Últimos pagos".
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y botón de cerrar sesión)
+     2. Contenido principal
+        2.1 Título
+        2.2 Tarjetas de resumen
+        2.3 Filtro por estado
+        2.4 Texto de resultados
+        2.5 Tabla de pagos
+        2.6 Mensaje de "sin pagos"
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Pagos</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-propietario.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="dashboard-propietario.html">Inicio</a>
+        <a href="mis-inmuebles.html">Mis inmuebles</a>
+        <a href="contratos-propietario.html">Contratos</a>
+        <a class="activo" href="pagos-propietario.html">Pagos</a>
+        <a href="incidencias-propietario.html">Incidencias</a>
+        <a href="mensajes-propietario.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y botón -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Propietario</strong></span>
+        <a class="boton boton-contorno" href="index.html">Cerrar sesión</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard" id="pagos-propietario">
+
+    <!-- 2.1 TÍTULO -->
+    <h1>Pagos</h1>
+
+    <!-- 2.2 TARJETAS DE RESUMEN -->
+    <section class="resumen">
+
+      <div class="tarjeta-resumen">
+        <h3>Ingresos al mes</h3>
+        <p class="cifra">1.600 €</p>
+        <p class="descripcion">suma de las cuotas</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Pagos pendientes</h3>
+        <p class="cifra">1</p>
+        <p class="descripcion">650 € sin confirmar</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Pagos cobrados</h3>
+        <p class="cifra">3</p>
+        <p class="descripcion">pagos confirmados</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Total cobrado</h3>
+        <p class="cifra">2.550 €</p>
+        <p class="descripcion">en los últimos meses</p>
+      </div>
+
+    </section>
+
+    <!-- 2.3 FILTRO POR ESTADO -->
+    <section class="filtros">
+
+      <div class="grupo-filtro">
+        <label for="filtro-estado-pago">Estado</label>
+        <select class="caja-texto" id="filtro-estado-pago">
+          <option value="">Todos</option>
+          <option value="pagado">Pagado</option>
+          <option value="pendiente">Pendiente</option>
+        </select>
+      </div>
+
+      <button type="button" class="boton boton-primario" id="boton-filtrar-pagos">Filtrar</button>
+      <button type="button" class="boton boton-secundario" id="boton-limpiar-pagos">Limpiar</button>
+
+    </section>
+
+    <!-- 2.4 TEXTO DE RESULTADOS -->
+    <p id="texto-resultados-pagos" class="texto-resultados">Mostrando 4 pagos</p>
+
+    <!-- 2.5 TABLA DE PAGOS -->
+    <section class="seccion-dashboard" id="seccion-tabla-pagos">
+      <div class="cabecera-seccion">
+        <h3>Pagos de mis inmuebles</h3>
+      </div>
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Inquilino</th>
+              <th>Inmueble</th>
+              <th>Concepto</th>
+              <th>Importe</th>
+              <th>Vence</th>
+              <th>Pagado el</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo-tabla-pagos">
+
+            <!-- Cada fila lleva data-estado ("pagado" o "pendiente") para que el filtro funcione.
+                 Pendiente: "Justificante" y "Confirmar" todavía no hacen nada. -->
+            <tr data-estado="pagado">
+              <td>Juan García</td>
+              <td>Piso en el centro</td>
+              <td>Renta mayo 2026</td>
+              <td>950 €</td>
+              <td>01/05/2026</td>
+              <td>30/04/2026</td>
+              <td><span class="insignia insignia-ok">Pagado</span></td>
+              <td><a href="#">Justificante</a></td>
+            </tr>
+            <tr data-estado="pendiente">
+              <td>María López</td>
+              <td>Estudio reformado</td>
+              <td>Renta mayo 2026</td>
+              <td>650 €</td>
+              <td>01/05/2026</td>
+              <td class="vacio">-</td>
+              <td><span class="insignia insignia-contorno">Pendiente</span></td>
+              <td><a href="#">Confirmar</a></td>
+            </tr>
+            <tr data-estado="pagado">
+              <td>Juan García</td>
+              <td>Piso en el centro</td>
+              <td>Renta abril 2026</td>
+              <td>950 €</td>
+              <td>01/04/2026</td>
+              <td>31/03/2026</td>
+              <td><span class="insignia insignia-ok">Pagado</span></td>
+              <td><a href="#">Justificante</a></td>
+            </tr>
+            <tr data-estado="pagado">
+              <td>María López</td>
+              <td>Estudio reformado</td>
+              <td>Renta abril 2026</td>
+              <td>650 €</td>
+              <td>01/04/2026</td>
+              <td>31/03/2026</td>
+              <td><span class="insignia insignia-ok">Pagado</span></td>
+              <td><a href="#">Justificante</a></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.6 MENSAJE DE "SIN PAGOS" (se enseña desde el JavaScript) -->
+    <p id="sin-pagos" class="sin-resultados" style="display:none;">
+      No hay pagos con el estado seleccionado.
+    </p>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="#">Aviso legal</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>
