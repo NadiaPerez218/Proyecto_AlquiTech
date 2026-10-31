@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     INCIDENCIAS DEL PROPIETARIO (incidencias-propietario.html)
+
+     Incidencias (averías o problemas) que han avisado los inquilinos
+     de los inmuebles del propietario.
+     Se llega desde el menú del panel del propietario ("Incidencias")
+     o desde el enlace "Ver todas" de "Últimas incidencias".
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y menú de perfil)
+     2. Contenido principal
+        2.1 Título
+        2.2 Tarjetas de resumen
+        2.3 Tabla de incidencias
+        2.4 Mensaje de "no hay incidencias"
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Incidencias</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-propietario.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="dashboard-propietario.html">Inicio</a>
+        <a href="mis-inmuebles.html">Mis inmuebles</a>
+        <a href="contratos-propietario.html">Contratos</a>
+        <a href="pagos-propietario.html">Pagos</a>
+        <a class="activo" href="incidencias-propietario.html">Incidencias</a>
+        <a href="mensajes-propietario.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y menú de perfil: el botón con las iniciales abre el submenú
+           (datos de la cuenta, Mi perfil y Cerrar sesión). Bloque 25 del JavaScript.
+           Si la persona ha puesto foto de perfil, el botón la enseña en lugar de las iniciales (bloque 26) -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Carlos</strong></span>
+        <div class="menu-perfil" data-rol="propietario">
+          <button type="button" class="boton-perfil" id="boton-perfil" data-iniciales="CM" aria-expanded="false" aria-controls="submenu-perfil" aria-label="Menú de perfil" title="Menú de perfil">CM</button>
+          <div class="submenu-perfil" id="submenu-perfil" hidden>
+            <div class="datos-perfil">
+              <strong id="submenu-nombre">Carlos Martínez</strong>
+              <span id="submenu-email">carlos.martinez@correo.es</span>
+              <span class="insignia insignia-contorno">Cuenta de propietario</span>
+            </div>
+            <a href="perfil-propietario.html">Mi perfil</a>
+            <a class="cerrar-sesion" href="index.html">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard" id="incidencias-propietario">
+
+    <!-- 2.1 TÍTULO -->
+    <h1>Incidencias</h1>
+
+    <!-- 2.2 TARJETAS DE RESUMEN -->
+    <section class="resumen">
+
+      <div class="tarjeta-resumen">
+        <h3>Abiertas</h3>
+        <p class="cifra">2</p>
+        <p class="descripcion">incidencias sin resolver</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>En curso</h3>
+        <p class="cifra">1</p>
+        <p class="descripcion">se está resolviendo</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Resueltas</h3>
+        <p class="cifra">1</p>
+        <p class="descripcion">incidencia solucionada</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Total</h3>
+        <p class="cifra">4</p>
+        <p class="descripcion">en todos mis inmuebles</p>
+      </div>
+
+    </section>
+
+    <!-- 2.3 TABLA DE INCIDENCIAS -->
+    <section class="seccion-dashboard" id="seccion-tabla-incidencias">
+      <div class="cabecera-seccion">
+        <h3>Incidencias de mis inmuebles</h3>
+      </div>
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Inmueble</th>
+              <th>Inquilino</th>
+              <th>Prioridad</th>
+              <th>Estado</th>
+              <th>Fecha</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo-tabla-incidencias">
+
+            <!-- "Ver" lleva al detalle de la incidencia y "Actualizar" baja directamente
+                 al formulario de cambiar el estado (#actualizar-estado) -->
+            <tr>
+              <td>Calefacción averiada</td>
+              <td>Estudio reformado</td>
+              <td>María López</td>
+              <td><span class="insignia insignia-contorno">Media</span></td>
+              <td><span class="insignia insignia-contorno">Abierta</span></td>
+              <td>04/05/2026</td>
+              <td><a href="detalle-incidencia-propietario.html?id=4">Ver</a><a href="detalle-incidencia-propietario.html?id=4#actualizar-estado">Actualizar</a></td>
+            </tr>
+            <tr>
+              <td>Gotera en el baño</td>
+              <td>Piso en el centro</td>
+              <td>Juan García</td>
+              <td><span class="insignia insignia-alta">Alta</span></td>
+              <td><span class="insignia insignia-contorno">Abierta</span></td>
+              <td>02/05/2026</td>
+              <td><a href="detalle-incidencia-propietario.html?id=1">Ver</a><a href="detalle-incidencia-propietario.html?id=1#actualizar-estado">Actualizar</a></td>
+            </tr>
+            <tr>
+              <td>Persiana del salón atascada</td>
+              <td>Piso en el centro</td>
+              <td>Juan García</td>
+              <td><span class="insignia insignia-contorno">Media</span></td>
+              <td><span class="insignia insignia-contorno">En curso</span></td>
+              <td>18/03/2026</td>
+              <td><a href="detalle-incidencia-propietario.html?id=2">Ver</a><a href="detalle-incidencia-propietario.html?id=2#actualizar-estado">Actualizar</a></td>
+            </tr>
+            <tr>
+              <td>Bombilla del pasillo fundida</td>
+              <td>Piso en el centro</td>
+              <td>Juan García</td>
+              <td><span class="insignia insignia-contorno">Baja</span></td>
+              <td><span class="insignia insignia-ok">Resuelta</span></td>
+              <td>10/02/2026</td>
+              <td><a href="detalle-incidencia-propietario.html?id=3">Ver</a></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.4 MENSAJE DE "NO HAY INCIDENCIAS" (se enseña desde el JavaScript si la tabla está vacía) -->
+    <p id="sin-incidencias" class="sin-resultados" style="display:none;">
+      Todavía no hay incidencias en tus inmuebles.
+    </p>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

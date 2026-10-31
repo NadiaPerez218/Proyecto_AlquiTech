@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     PÁGINA DE INICIO (index.html)
+
+     BLOQUES:
+     1. Cabecera (logo, menú y botones)
+     2. Contenido principal
+        2.1 Inicio (título y botones)
+        2.2 Funcionalidades
+        2.3 Roles (propietario e inquilino)
+        2.4 Llamada a la acción
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Gestión de alquileres</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a class="activo" href="#inicio">Inicio</a>
+        <a href="inmuebles.html">Inmuebles</a>
+        <a href="como-funciona.html">¿Cómo funciona?</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Botones -->
+      <div class="acceso">
+        <a class="boton boton-contorno" href="login.html">Iniciar sesión</a>
+        <a class="boton boton-blanco" href="registro.html">Registrarse</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main>
+
+    <!-- 2.1 INICIO -->
+    <section class="inicio" id="inicio">
+      <span class="insignia-hero">Plataforma de gestión de alquileres</span>
+      <h1>Gestiona tu alquiler de forma sencilla y digital</h1>
+      <p>AlquiTech centraliza toda la gestión del alquiler en un solo lugar, tanto para propietarios como para inquilinos.</p>
+      <div class="grupo-botones">
+        <a class="boton boton-primario" href="registro.html">Empezar gratis</a>
+        <a class="boton boton-secundario" href="inmuebles.html">Ver inmuebles</a>
+      </div>
+    </section>
+
+    <!-- 2.2 FUNCIONALIDADES -->
+    <section class="funcionalidades" id="funcionalidades">
+      <div class="contenedor">
+        <span class="etiqueta">Funcionalidades</span>
+        <h2>Todo lo que necesitas en un solo lugar</h2>
+
+        <div class="cuadricula-funcionalidades">
+
+          <!-- Tarjeta 1 -->
+          <div class="tarjeta-funcionalidad">
+            <img src="../IMG/contrato-digital.png" alt="">
+            <h3>Contratos digitales</h3>
+            <p>Genera y firma contratos de forma digital.</p>
+          </div>
+
+          <!-- Tarjeta 2 -->
+          <div class="tarjeta-funcionalidad">
+            <img src="../IMG/gestion-pagos.png" alt="">
+            <h3>Control de pagos</h3>
+            <p>Registra y consulta el historial de pagos.</p>
+          </div>
+
+          <!-- Tarjeta 3 -->
+          <div class="tarjeta-funcionalidad">
+            <img src="../IMG/gestion-incidencias.png" alt="">
+            <h3>Gestión de incidencias</h3>
+            <p>Reporta y sigue el estado de incidencias.</p>
+          </div>
+
+          <!-- Tarjeta 4 -->
+          <div class="tarjeta-funcionalidad">
+            <img src="../IMG/mensajeria-integrada.png" alt="">
+            <h3>Mensajería integrada</h3>
+            <p>Comunícate sin apps externas.</p>
+          </div>
+
+          <!-- Tarjeta 5 -->
+          <div class="tarjeta-funcionalidad">
+            <img src="../IMG/documentacion.png" alt="">
+            <h3>Documentación</h3>
+            <p>Accede a toda la documentación.</p>
+          </div>
+
+          <!-- Tarjeta 6 -->
+          <div class="tarjeta-funcionalidad">
+            <img src="../IMG/scoring.png" alt="">
+            <h3>Sistema de scoring</h3>
+            <p>Evalúa la fiabilidad del inquilino.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.3 ROLES -->
+    <section class="roles">
+      <div class="contenedor">
+        <span class="etiqueta">Para todos</span>
+        <h2>Diseñado para propietarios e inquilinos</h2>
+
+        <div class="cuadricula-roles">
+
+          <!-- Tarjeta del propietario -->
+          <div class="tarjeta-rol">
+            <h3>Soy propietario</h3>
+            <p>Gestiona tus inmuebles desde un panel centralizado.</p>
+            <ul>
+              <li>Publica y gestiona tus inmuebles.</li>
+              <li>Revisa solicitudes de alquiler.</li>
+              <li>Genera contratos digitales.</li>
+              <li>Controla pagos e incidencias.</li>
+              <li>Centraliza la documentación.</li>
+            </ul>
+          </div>
+
+          <!-- Tarjeta del inquilino -->
+          <div class="tarjeta-rol">
+            <h3>Soy inquilino</h3>
+            <p>Encuentra vivienda y gestiona tu alquiler.</p>
+            <ul>
+              <li>Busca inmuebles por ciudad.</li>
+              <li>Envía solicitudes de alquiler.</li>
+              <li>Consulta y firma tu contrato.</li>
+              <li>Registra pagos e incidencias.</li>
+              <li>Comunícate con tu propietario.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.4 LLAMADA A LA ACCIÓN -->
+    <section class="llamada-accion">
+      <h2>¿Listo para digitalizar tu alquiler?</h2>
+      <p>Únete a AlquiTech y olvídate de la gestión manual.</p>
+      <a class="boton boton-primario" href="registro.html">Crear cuenta gratis</a>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

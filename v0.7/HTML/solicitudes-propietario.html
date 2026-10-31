@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     SOLICITUDES DE ALQUILER DEL PROPIETARIO (solicitudes-propietario.html)
+
+     Solicitudes que han enviado los inquilinos para alquilar los inmuebles
+     del propietario. Desde aquí se aceptan o se rechazan.
+     Se llega desde "Solicitudes pendientes" del panel del propietario
+     y desde el enlace "Solicitudes" de "Mis inmuebles".
+     El JavaScript (bloque 20) cuenta las solicitudes y hace funcionar los botones.
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y menú de perfil)
+     2. Contenido principal
+        2.1 Título
+        2.2 Tarjetas de resumen
+        2.3 Solicitudes (una tarjeta por solicitud)
+        2.4 Mensaje de "no hay solicitudes"
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Solicitudes de alquiler</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-propietario.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú (las solicitudes no tienen enlace propio: van con "Mis inmuebles") -->
+      <nav>
+        <a href="dashboard-propietario.html">Inicio</a>
+        <a class="activo" href="mis-inmuebles.html">Mis inmuebles</a>
+        <a href="contratos-propietario.html">Contratos</a>
+        <a href="pagos-propietario.html">Pagos</a>
+        <a href="incidencias-propietario.html">Incidencias</a>
+        <a href="mensajes-propietario.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y menú de perfil: el botón con las iniciales abre el submenú
+           (datos de la cuenta, Mi perfil y Cerrar sesión). Bloque 25 del JavaScript.
+           Si la persona ha puesto foto de perfil, el botón la enseña en lugar de las iniciales (bloque 26) -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Carlos</strong></span>
+        <div class="menu-perfil" data-rol="propietario">
+          <button type="button" class="boton-perfil" id="boton-perfil" data-iniciales="CM" aria-expanded="false" aria-controls="submenu-perfil" aria-label="Menú de perfil" title="Menú de perfil">CM</button>
+          <div class="submenu-perfil" id="submenu-perfil" hidden>
+            <div class="datos-perfil">
+              <strong id="submenu-nombre">Carlos Martínez</strong>
+              <span id="submenu-email">carlos.martinez@correo.es</span>
+              <span class="insignia insignia-contorno">Cuenta de propietario</span>
+            </div>
+            <a href="perfil-propietario.html">Mi perfil</a>
+            <a class="cerrar-sesion" href="index.html">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard" id="solicitudes-propietario">
+
+    <!-- Enlace para volver al panel -->
+    <a class="enlace-volver" href="dashboard-propietario.html">← Volver al panel</a>
+
+    <!-- 2.1 TÍTULO -->
+    <h1>Solicitudes de alquiler</h1>
+
+    <!-- 2.2 TARJETAS DE RESUMEN (el JavaScript cuenta las tarjetas de abajo y escribe las cifras) -->
+    <section class="resumen">
+
+      <div class="tarjeta-resumen">
+        <h3>Pendientes</h3>
+        <p class="cifra" id="contador-pendientes">2</p>
+        <p class="descripcion">esperan tu respuesta</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Aceptadas</h3>
+        <p class="cifra" id="contador-aceptadas">0</p>
+        <p class="descripcion">solicitudes aceptadas</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Rechazadas</h3>
+        <p class="cifra" id="contador-rechazadas">1</p>
+        <p class="descripcion">solicitudes rechazadas</p>
+      </div>
+
+      <div class="tarjeta-resumen">
+        <h3>Total</h3>
+        <p class="cifra" id="contador-total">3</p>
+        <p class="descripcion">solicitudes recibidas</p>
+      </div>
+
+    </section>
+
+    <!-- 2.3 SOLICITUDES
+         Cada tarjeta guarda su estado en data-estado ("pendiente", "aceptada" o "rechazada"),
+         el nombre de la persona en data-nombre (para el mensaje de confirmar)
+         y los ingresos y el alquiler en euros en data-ingresos y data-alquiler
+         (para calcular la solvencia).
+         La solvencia (el "sistema de scoring") se ve en estrellas junto al nombre y en palabra
+         en la fila "Solvencia"; el botón "?" enseña cómo se ha calculado. -->
+    <div id="lista-solicitudes">
+
+      <section class="seccion-dashboard tarjeta-solicitud" data-estado="pendiente" data-nombre="Laura Sánchez" data-ingresos="3400" data-alquiler="1100">
+        <div class="cabecera-seccion">
+          <div class="nombre-solicitud">
+            <h3>Laura Sánchez</h3>
+            <span class="estrellas solvencia"></span>
+          </div>
+          <span class="insignia insignia-contorno estado-solicitud">Pendiente</span>
+        </div>
+        <div class="cuadricula-datos">
+          <p class="dato-reserva"><span>Inmueble</span> <strong>Apartamento luminoso, Barcelona</strong></p>
+          <p class="dato-reserva"><span>Enviada el</span> <strong>05/05/2026</strong></p>
+          <p class="dato-reserva"><span>Fecha de entrada</span> <strong>01/06/2026</strong></p>
+          <p class="dato-reserva"><span>Duración</span> <strong>12 meses</strong></p>
+          <p class="dato-reserva"><span>Personas</span> <strong>2</strong></p>
+          <p class="dato-reserva"><span>Ingresos al mes</span> <strong>3.400 €</strong></p>
+          <p class="dato-reserva">
+            <span>Solvencia <button type="button" class="ayuda-solvencia" aria-expanded="false" aria-label="¿Cómo se calcula la solvencia?">?</button></span>
+            <strong class="nivel-solvencia"></strong>
+          </p>
+        </div>
+        <div class="explicacion-solvencia" hidden></div>
+        <p class="texto-seccion mensaje-solicitud">"Hola, somos una pareja que se muda a Barcelona por trabajo. Los dos tenemos contrato indefinido y buscamos un piso tranquilo para quedarnos al menos un año."</p>
+        <div class="acciones-solicitud">
+          <button type="button" class="boton boton-primario boton-aceptar">Aceptar</button>
+          <button type="button" class="boton boton-secundario boton-rechazar">Rechazar</button>
+        </div>
+      </section>
+
+      <section class="seccion-dashboard tarjeta-solicitud" data-estado="pendiente" data-nombre="Pablo Ruiz" data-ingresos="1900" data-alquiler="1100">
+        <div class="cabecera-seccion">
+          <div class="nombre-solicitud">
+            <h3>Pablo Ruiz</h3>
+            <span class="estrellas solvencia"></span>
+          </div>
+          <span class="insignia insignia-contorno estado-solicitud">Pendiente</span>
+        </div>
+        <div class="cuadricula-datos">
+          <p class="dato-reserva"><span>Inmueble</span> <strong>Apartamento luminoso, Barcelona</strong></p>
+          <p class="dato-reserva"><span>Enviada el</span> <strong>03/05/2026</strong></p>
+          <p class="dato-reserva"><span>Fecha de entrada</span> <strong>15/06/2026</strong></p>
+          <p class="dato-reserva"><span>Duración</span> <strong>24 meses</strong></p>
+          <p class="dato-reserva"><span>Personas</span> <strong>1</strong></p>
+          <p class="dato-reserva"><span>Ingresos al mes</span> <strong>1.900 €</strong></p>
+          <p class="dato-reserva">
+            <span>Solvencia <button type="button" class="ayuda-solvencia" aria-expanded="false" aria-label="¿Cómo se calcula la solvencia?">?</button></span>
+            <strong class="nivel-solvencia"></strong>
+          </p>
+        </div>
+        <div class="explicacion-solvencia" hidden></div>
+        <p class="texto-seccion mensaje-solicitud">"Buenas tardes. Trabajo como diseñador desde casa y me interesa mucho la luz del apartamento. Busco algo para varios años."</p>
+        <div class="acciones-solicitud">
+          <button type="button" class="boton boton-primario boton-aceptar">Aceptar</button>
+          <button type="button" class="boton boton-secundario boton-rechazar">Rechazar</button>
+        </div>
+      </section>
+
+      <section class="seccion-dashboard tarjeta-solicitud" data-estado="rechazada" data-nombre="Marta Gil" data-ingresos="2400" data-alquiler="1100">
+        <div class="cabecera-seccion">
+          <div class="nombre-solicitud">
+            <h3>Marta Gil</h3>
+            <span class="estrellas solvencia"></span>
+          </div>
+          <span class="insignia insignia-alta estado-solicitud">Rechazada</span>
+        </div>
+        <div class="cuadricula-datos">
+          <p class="dato-reserva"><span>Inmueble</span> <strong>Apartamento luminoso, Barcelona</strong></p>
+          <p class="dato-reserva"><span>Enviada el</span> <strong>28/04/2026</strong></p>
+          <p class="dato-reserva"><span>Fecha de entrada</span> <strong>15/05/2026</strong></p>
+          <p class="dato-reserva"><span>Duración</span> <strong>6 meses</strong></p>
+          <p class="dato-reserva"><span>Personas</span> <strong>3</strong></p>
+          <p class="dato-reserva"><span>Ingresos al mes</span> <strong>2.400 €</strong></p>
+          <p class="dato-reserva">
+            <span>Solvencia <button type="button" class="ayuda-solvencia" aria-expanded="false" aria-label="¿Cómo se calcula la solvencia?">?</button></span>
+            <strong class="nivel-solvencia"></strong>
+          </p>
+        </div>
+        <div class="explicacion-solvencia" hidden></div>
+        <p class="texto-seccion mensaje-solicitud">"Hola, necesitamos un piso solo para unos meses mientras terminamos las obras de nuestra casa."</p>
+        <div class="acciones-solicitud">
+          <p class="nota-solicitud">Rechazaste esta solicitud el 29/04/2026.</p>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 2.4 MENSAJE DE "NO HAY SOLICITUDES" (se enseña desde el JavaScript si no hay tarjetas) -->
+    <p id="sin-solicitudes" class="sin-resultados" style="display:none;">
+      Todavía no has recibido ninguna solicitud de alquiler.
+    </p>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

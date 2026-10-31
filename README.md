@@ -31,6 +31,7 @@ Cada versión vive en su propia carpeta, para conservar el historial de cómo ha
 | [`v0.4`](v0.4) | Añade el listado "Mis inmuebles" del propietario. |
 | [`v0.5`](v0.5) | Añade las pantallas del inquilino: mi contrato, pagos, incidencias (listado y formulario) y mensajes. |
 | [`v0.6`](v0.6) | Añade las pantallas del propietario: contratos, pagos, incidencias y mensajes. |
+| [`v0.7`](v0.7) | Frontend completo: detalles de incidencia y contrato, editar inmueble, solicitudes de alquiler con solvencia en estrellas, ¿Cómo funciona?, páginas legales y contacto, recuperar contraseña, justificantes, confirmar pagos y perfil con menú y foto. |
 
 ### Estructura de cada versión
 
@@ -45,32 +46,52 @@ vX.X/
 
 ---
 
-## Páginas de la versión actual (v0.6)
+## Páginas de la versión actual (v0.7)
+
+**Parte pública**
 
 - **Inicio** (`index.html`): presentación de AlquiTech, funcionalidades y roles.
 - **Registro** (`registro.html`): alta de propietario o inquilino con validación.
 - **Iniciar sesión** (`login.html`): acceso con correo y contraseña.
 - **Inmuebles** (`inmuebles.html`): catálogo con filtros por ciudad y precio.
-- **Panel del propietario** (`dashboard-propietario.html`).
-- **Panel del inquilino** (`dashboard-inquilino.html`).
 - **Detalle de inmueble** (`detalle-inmueble.html`), nueva en la v0.2.
-- **Publicar inmueble** (`publicar-inmueble.html`), nueva en la v0.3.
+- **¿Cómo funciona?** (`como-funciona.html`), nueva en la v0.7.
+- **Contacto** (`contacto.html`), nueva en la v0.7.
+- **Aviso legal** (`aviso-legal.html`), nueva en la v0.7.
+- **Política de privacidad** (`privacidad.html`), nueva en la v0.7.
+- **Recuperar contraseña** (`recuperar-contrasena.html`), nueva en la v0.7.
+
+**Propietario**
+- **Panel del propietario** (`dashboard-propietario.html`).
 - **Mis inmuebles** (`mis-inmuebles.html`), nueva en la v0.4.
+- **Publicar inmueble** (`publicar-inmueble.html`), nueva en la v0.3.
+- **Editar inmueble** (`editar-inmueble.html`), nueva en la v0.7.
+- **Solicitudes de alquiler** (`solicitudes-propietario.html`), nueva en la v0.7.
+- **Contratos** (`contratos-propietario.html`), nueva en la v0.6.
+- **Detalle de contrato** (`detalle-contrato.html`), nueva en la v0.7.
+- **Pagos** (`pagos-propietario.html`), nueva en la v0.6.
+- **Incidencias** (`incidencias-propietario.html`), nueva en la v0.6.
+- **Detalle de incidencia** (`detalle-incidencia-propietario.html`), nueva en la v0.7.
+- **Mensajes** (`mensajes-propietario.html`), nueva en la v0.6.
+- **Mi perfil** (`perfil-propietario.html`), nueva en la v0.7.
+
+**Inquilino**
+- **Panel del inquilino** (`dashboard-inquilino.html`).
+- **Solicitar alquiler** (`solicitar-alquiler.html`), nueva en la v0.7.
 - **Mi contrato** (`mi-contrato.html`), nueva en la v0.5.
-- **Pagos del inquilino** (`pagos-inquilino.html`), nueva en la v0.5.
-- **Incidencias del inquilino** (`incidencias-inquilino.html`), nueva en la v0.5.
+- **Pagos** (`pagos-inquilino.html`), nueva en la v0.5.
+- **Subir justificante** (`subir-justificante.html`), nueva en la v0.7.
+- **Incidencias** (`incidencias-inquilino.html`), nueva en la v0.5.
 - **Nueva incidencia** (`nueva-incidencia.html`), nueva en la v0.5.
-- **Mensajes del inquilino** (`mensajes-inquilino.html`), nueva en la v0.5.
-- **Contratos del propietario** (`contratos-propietario.html`), nueva en la v0.6.
-- **Pagos del propietario** (`pagos-propietario.html`), nueva en la v0.6.
-- **Incidencias del propietario** (`incidencias-propietario.html`), nueva en la v0.6.
-- **Mensajes del propietario** (`mensajes-propietario.html`), nueva en la v0.6.
+- **Detalle de incidencia** (`detalle-incidencia-inquilino.html`), nueva en la v0.7.
+- **Mensajes** (`mensajes-inquilino.html`), nueva en la v0.5.
+- **Mi perfil** (`perfil-inquilino.html`), nueva en la v0.7.
 
 ---
 
 ## Tecnologías
 
-**Frontend (v0.6):** HTML5, CSS3 y JavaScript sin librerías. Tipografías Montserrat (títulos) y Lato (texto) de Google Fonts.
+**Frontend (v0.7):** HTML5, CSS3 y JavaScript sin librerías. Tipografías Montserrat (títulos) y Lato (texto) de Google Fonts. La foto de perfil se guarda de momento en el navegador con `localStorage`.
 
 **Previstas para la siguiente fase:** base de datos MySQL, con autenticación segura.
 
@@ -92,6 +113,6 @@ No hace falta instalar nada.
 - [x] Detalle de inmueble, publicar inmueble y mis inmuebles (v0.2 a v0.4)
 - [x] Pantallas del inquilino: contrato, pagos, incidencias y mensajes (v0.5)
 - [x] Pantallas del propietario: contratos, pagos, incidencias y mensajes (v0.6)
-- [ ] Páginas de aviso legal, privacidad y contacto
+- [x] Frontend completo: detalles, solicitudes con solvencia, páginas legales y contacto, perfil de usuario (v0.7)
 - [ ] Conexión con el backend y la base de datos
 - [ ] Despliegue
