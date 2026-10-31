@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     CONTACTO (contacto.html)
+
+     Formulario para enviar una consulta al equipo de AlquiTech.
+     Se llega desde "Contacto" en el menú de la parte pública
+     y en el pie de página de todas las páginas.
+
+     BLOQUES:
+     1. Cabecera (logo, menú y botones)
+     2. Formulario de contacto
+        2.1 Nombre y correo
+        2.2 Asunto
+        2.3 Mensaje
+        2.4 Aceptar la política de privacidad
+        2.5 Botón
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Contacto</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="inmuebles.html">Inmuebles</a>
+        <a href="como-funciona.html">¿Cómo funciona?</a>
+        <a class="activo" href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Botones -->
+      <div class="acceso">
+        <a class="boton boton-contorno" href="login.html">Iniciar sesión</a>
+        <a class="boton boton-blanco" href="registro.html">Registrarse</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. FORMULARIO DE CONTACTO ==================== -->
+  <main class="pagina-formulario">
+
+    <section class="formulario-contenedor formulario-ancho">
+      <h1>Contacto</h1>
+      <p class="subtitulo">¿Tienes alguna duda sobre AlquiTech? Escríbenos y te responderemos lo antes posible.</p>
+      <hr class="separador">
+
+      <!-- novalidate: el navegador no muestra sus avisos; se usan los mensajes de nuestro JavaScript -->
+      <form id="formulario-contacto" novalidate>
+
+        <!-- 2.1 NOMBRE Y CORREO -->
+        <div class="fila-dos">
+
+          <div class="grupo-campo">
+            <label for="nombre-contacto">Nombre</label>
+            <input class="caja-texto" type="text" id="nombre-contacto" name="nombre" placeholder="Tu nombre">
+            <span class="error" id="error-nombre-contacto"></span>
+          </div>
+
+          <div class="grupo-campo">
+            <label for="email-contacto">Correo electrónico</label>
+            <input class="caja-texto" type="email" id="email-contacto" name="email" placeholder="correo@ejemplo.com">
+            <span class="error" id="error-email-contacto"></span>
+          </div>
+
+        </div>
+
+        <!-- 2.2 ASUNTO -->
+        <div class="grupo-campo">
+          <label for="asunto-contacto">Asunto</label>
+          <select class="caja-texto" id="asunto-contacto" name="asunto">
+            <option value="">Selecciona un asunto</option>
+            <option value="propietario">Soy propietario y tengo una duda</option>
+            <option value="inquilino">Soy inquilino y tengo una duda</option>
+            <option value="cuenta">Problemas con mi cuenta</option>
+            <option value="datos">Mis datos personales</option>
+            <option value="otro">Otro asunto</option>
+          </select>
+          <span class="error" id="error-asunto-contacto"></span>
+        </div>
+
+        <!-- 2.3 MENSAJE -->
+        <div class="grupo-campo">
+          <label for="mensaje-contacto">Mensaje</label>
+          <textarea class="caja-texto caja-area" id="mensaje-contacto" name="mensaje" placeholder="Cuéntanos en qué podemos ayudarte (mínimo 20 caracteres)"></textarea>
+          <span class="error" id="error-mensaje-contacto"></span>
+        </div>
+
+        <!-- 2.4 ACEPTAR LA POLÍTICA DE PRIVACIDAD -->
+        <div class="grupo-campo">
+          <label class="casilla-aceptar" for="acepto-privacidad">
+            <input type="checkbox" id="acepto-privacidad" name="privacidad">
+            <span>He leído y acepto la <a href="privacidad.html">política de privacidad</a>.</span>
+          </label>
+          <span class="error" id="error-acepto-privacidad"></span>
+        </div>
+
+        <hr class="separador">
+
+        <!-- 2.5 BOTÓN -->
+        <button type="submit" class="boton boton-primario boton-bloque">Enviar mensaje</button>
+
+      </form>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

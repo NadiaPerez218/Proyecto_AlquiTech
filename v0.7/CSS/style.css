@@ -9,11 +9,15 @@
    5. Pie de página (footer)
    6. Acceso a las vistas de demo
    7. Página de inicio (index)
-   8. Formularios (registro, login y publicar inmueble)
+   8. Formularios (registro, login, publicar y editar inmueble)
    9. Paneles (dashboard del propietario y del inquilino)
    10. Catálogo de inmuebles
    11. Detalle de inmueble
-   12. Versión móvil
+   12. Páginas legales y contacto
+   13. ¿Cómo funciona?
+   14. Solicitudes de alquiler
+   15. Recuperar contraseña, subir justificante y mi perfil
+   16. Versión móvil
 
    COLORES QUE SE USAN EN TODA LA WEB:
    #F2FBF8  Menta suave 1       (fondo de la página)
@@ -27,6 +31,8 @@
    #3C9150  Verde              (estados correctos)
    #B3261E  Rojo               (errores)
    #FBE9E7  Rosa muy claro     (fondo de la insignia "Alta")
+   #E8A317  Dorado             (estrellas llenas de la solvencia)
+   #D9DEDF  Gris claro         (estrellas vacías de la solvencia)
    #FFFFFF  Blanco
    ===================================================================== */
 
@@ -59,6 +65,13 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Lo que lleva el atributo hidden no se ve nunca.
+   Hace falta porque algunas clases (por ejemplo .boton, con display: inline-flex)
+   ganan al hidden del navegador y el elemento se seguiría viendo */
+[hidden] {
+  display: none !important;
 }
 
 /* El contenido principal ocupa el espacio libre, así el footer queda siempre abajo */
@@ -287,6 +300,122 @@ header nav a.activo {
   color: #FFFFFF;
 }
 
+/* --- Menú de perfil (páginas del propietario y del inquilino) --- */
+
+/* Caja del botón y del submenú: el submenú se coloca respecto a ella */
+.menu-perfil {
+  position: relative;
+}
+
+/* Botón redondo con las iniciales: borde blanco que se rellena al pasar el ratón o al abrirlo */
+.boton-perfil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.boton-perfil:hover,
+.boton-perfil[aria-expanded="true"] {
+  background-color: #FFFFFF;
+  color: #2B7A78;
+}
+
+.boton-perfil:focus-visible {
+  outline: 3px solid #7ED9C3;
+  outline-offset: 2px;
+}
+
+/* Con foto de perfil: la imagen llena el círculo (se recorta sola, sin deformarse) */
+.boton-perfil img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Con foto, al pasar el ratón o al abrir el submenú el borde pasa a menta */
+.boton-perfil.con-foto:hover,
+.boton-perfil.con-foto[aria-expanded="true"] {
+  border-color: #7ED9C3;
+}
+
+/* Submenú: tarjeta blanca debajo del botón, alineada a la derecha */
+.submenu-perfil {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 110;
+  width: 270px;
+  background-color: #FFFFFF;
+  border: 1px solid #CFF3EA;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(23, 37, 42, 0.15);
+  overflow: hidden;
+}
+
+/* Datos de la cuenta (nombre, correo y tipo de cuenta) */
+.datos-perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #CFF3EA;
+}
+
+.datos-perfil strong {
+  font-size: 1rem;
+  color: #17252A;
+}
+
+.datos-perfil span {
+  font-size: 0.875rem;
+  color: #667274;
+  /* Si el correo es muy largo, se corta en lugar de salirse */
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.datos-perfil .insignia {
+  margin-top: 8px;
+  color: #2B7A78;
+}
+
+/* Opciones del submenú */
+.submenu-perfil a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: #17252A;
+  text-decoration: none;
+}
+
+.submenu-perfil a:hover,
+.submenu-perfil a:focus-visible {
+  background-color: #F2FBF8;
+  outline: none;
+}
+
+/* "Cerrar sesión": separado con una línea y en rojo */
+.submenu-perfil .cerrar-sesion {
+  border-top: 1px solid #CFF3EA;
+  color: #B3261E;
+}
+
 /* --- Header encogido (la clase "reducido" la pone el JavaScript al hacer scroll) --- */
 header.reducido .cabecera {
   height: 48px;
@@ -298,6 +427,11 @@ header.reducido .logo img {
 
 header.reducido .acceso .boton {
   height: 30px;
+}
+
+header.reducido .boton-perfil {
+  width: 34px;
+  height: 34px;
 }
 
 
@@ -731,6 +865,17 @@ fieldset.grupo-campo {
   cursor: pointer;
 }
 
+/* Foto actual del inmueble (editar inmueble) */
+.foto-actual {
+  display: block;
+  width: 200px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  background-color: #CFF3EA;
+  margin-bottom: 12px;
+}
+
 /* Casillas de características, en dos columnas */
 .grupo-checks {
   display: grid;
@@ -783,6 +928,56 @@ fieldset.grupo-campo {
   margin-bottom: 0;
 }
 
+/* --- Datos del contrato: lista de datos en dos columnas --- */
+.cuadricula-datos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0 48px;
+  padding: 0 24px 12px 24px;
+}
+
+/* --- Condiciones del contrato: lista de frases --- */
+.lista-condiciones {
+  margin: 0;
+  padding: 0 24px 12px 44px;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: #4E5A5E;
+}
+
+.lista-condiciones li {
+  margin-bottom: 12px;
+}
+
+.lista-condiciones strong {
+  color: #17252A;
+}
+
+/* --- Texto largo dentro de una sección (descripción de la incidencia) --- */
+.texto-seccion {
+  padding: 0 24px 24px 24px;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #4E5A5E;
+}
+
+/* --- Formulario dentro de una sección (cambiar el estado de una incidencia) --- */
+.formulario-seccion {
+  max-width: 760px;
+  padding: 0 24px 24px 24px;
+}
+
+.formulario-seccion .caja-texto {
+  font-size: 1.125rem;
+  border-radius: 12px;
+}
+
+/* Al llegar con el enlace "Actualizar" (#actualizar-estado), la sección
+   se para por debajo del menú fijo en lugar de quedar tapada por él */
+#actualizar-estado {
+  scroll-margin-top: 96px;
+}
+
 /* --- Tarjetas de resumen (arriba) --- */
 .resumen {
   display: grid;
@@ -812,6 +1007,11 @@ fieldset.grupo-campo {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 4px;
+}
+
+/* Cifra más pequeña para las fechas (31/12/2026 no cabe a 48 px en la tarjeta) */
+.tarjeta-resumen .cifra-fecha {
+  font-size: 2rem;
 }
 
 .tarjeta-resumen .descripcion {
@@ -967,6 +1167,103 @@ fieldset.grupo-campo {
 .mensaje p {
   margin-top: 4px;
   color: #4E5A5E;
+}
+
+/* --- Página estrecha (900 px de contenido + 32 px de relleno a cada lado), centrada.
+       Se usa en la página de mensajes, donde una sola conversación no necesita todo el ancho --- */
+.pagina-estrecha {
+  max-width: 964px;
+}
+
+/* --- Conversación (página de mensajes) --- */
+.chat {
+  background-color: #FFFFFF;
+  border: 1px solid #CFF3EA;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Nombre de la persona con la que se habla */
+.chat-cabecera {
+  padding: 20px 24px;
+  border-bottom: 1px solid #CFF3EA;
+}
+
+.chat-cabecera h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.chat-cabecera p {
+  font-size: 1rem;
+  color: #4E5A5E;
+}
+
+/* Zona de los mensajes: si hay muchos, aparece una barra para bajar */
+.chat-mensajes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 460px;
+  overflow-y: auto;
+  padding: 24px;
+  background-color: #F2FBF8;
+}
+
+/* Cada mensaje es una burbuja */
+.burbuja {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.burbuja .fecha-mensaje {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.875rem;
+}
+
+/* Mensajes del propietario: a la izquierda y en blanco */
+.burbuja-recibida {
+  align-self: flex-start;
+  background-color: #FFFFFF;
+  border: 1px solid #CFF3EA;
+  border-bottom-left-radius: 4px;
+}
+
+/* Mensajes del inquilino: a la derecha y en menta */
+.burbuja-enviada {
+  align-self: flex-end;
+  background-color: #CFF3EA;
+  border: 1px solid #7ED9C3;
+  border-bottom-right-radius: 4px;
+}
+
+/* Botones para elegir con qué inquilino se habla (el elegido va relleno) */
+.pestanas-chat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.pestana.activa {
+  background-color: #2B7A78;
+  color: #FFFFFF;
+}
+
+/* Formulario para escribir un mensaje nuevo */
+.chat-enviar {
+  padding: 24px;
+  border-top: 1px solid #CFF3EA;
+}
+
+.chat-enviar .caja-texto {
+  font-size: 1.125rem;
+  border-radius: 12px;
 }
 
 
@@ -1191,18 +1488,22 @@ fieldset.grupo-campo {
   margin-bottom: 20px;
 }
 
-/* Cada dato: nombre a la izquierda y valor a la derecha */
+/* Cada dato: nombre a la izquierda y valor a la derecha
+   (se usa en la tarjeta de precio del detalle y en los datos de "Mi contrato") */
 .dato-reserva {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
   padding: 10px 0;
   border-top: 1px solid #CFF3EA;
   font-size: 1.125rem;
   color: #4E5A5E;
 }
 
+/* Si el valor es largo y ocupa dos líneas, se queda pegado a la derecha */
 .dato-reserva strong {
   color: #17252A;
+  text-align: right;
 }
 
 .tarjeta-reserva .boton {
@@ -1211,7 +1512,559 @@ fieldset.grupo-campo {
 
 
 /* =====================================================================
-   12. VERSIÓN MÓVIL
+   12. PÁGINAS LEGALES Y CONTACTO
+   ===================================================================== */
+.pagina-legal {
+  padding: 48px 32px 64px 32px;
+}
+
+.pagina-legal h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* Fecha de "Última actualización" debajo del título */
+.fecha-legal {
+  font-size: 1rem;
+  color: #667274;
+  margin-bottom: 28px;
+}
+
+/* Caja menta que avisa de que es un proyecto académico */
+.aviso-proyecto {
+  background-color: #CFF3EA;
+  border: 1px solid #7ED9C3;
+  border-radius: 20px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Separación entre párrafos seguidos de una misma sección */
+.pagina-legal .detalle-seccion p + p {
+  margin-top: 12px;
+}
+
+/* Listas dentro de las secciones */
+.lista-legal {
+  margin: 12px 0 0 0;
+  padding-left: 22px;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #4E5A5E;
+}
+
+.lista-legal li {
+  margin-bottom: 6px;
+}
+
+.lista-legal strong {
+  color: #17252A;
+}
+
+/* Frase de "Al crear tu cuenta aceptas..." (debajo del formulario de registro) */
+.texto-legal-formulario {
+  text-align: center;
+  font-size: 0.9375rem;
+  color: #667274;
+  margin-top: 12px;
+}
+
+/* Casilla de "He leído y acepto la política de privacidad" (formulario de contacto) */
+/* ".grupo-campo" delante para que gane a ".grupo-campo label" (que pone las etiquetas en negrita) */
+.grupo-campo .casilla-aceptar {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.casilla-aceptar input {
+  accent-color: #2B7A78;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0 0;
+  flex-shrink: 0;
+}
+
+
+/* =====================================================================
+   13. ¿CÓMO FUNCIONA?
+   ===================================================================== */
+
+/* Presentación más baja que la de la página de inicio */
+.inicio-corto {
+  padding: 80px 32px 64px;
+}
+
+/* --- Sección de pasos --- */
+.seccion-pasos {
+  background-color: #FFFFFF;
+  text-align: center;
+  padding: 72px 0 88px 0;
+}
+
+.seccion-pasos h2,
+.preguntas h2 {
+  font-size: 2.125rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+/* Botones "Soy propietario" y "Soy inquilino" (el elegido va relleno, con .pestana.activa) */
+.selector-rol {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+/* Lista de pasos: centrada, con el texto alineado a la izquierda */
+.lista-pasos {
+  list-style: none;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+/* Cada paso: número en un círculo a la izquierda y el texto a la derecha */
+.paso {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  background-color: #F2FBF8;
+  border: 1px solid #CFF3EA;
+  border-radius: 20px;
+}
+
+.numero-paso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #2B7A78;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.paso h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 10px 0 6px 0;
+}
+
+.paso p {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: #4E5A5E;
+}
+
+/* Enlace de algunos pasos ("Crear cuenta →", "Ver inmuebles →") */
+.enlace-paso {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #2B7A78;
+  text-decoration: none;
+}
+
+.enlace-paso:hover {
+  text-decoration: underline;
+}
+
+/* --- Preguntas frecuentes --- */
+.preguntas {
+  background-color: #F2FBF8;
+  text-align: center;
+  padding: 72px 0 88px 0;
+}
+
+.lista-preguntas {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Cada pregunta es un <details>: se abre y se cierra al pulsar el <summary> */
+.pregunta {
+  background-color: #FFFFFF;
+  border: 1px solid #CFF3EA;
+  border-radius: 16px;
+  margin-bottom: 12px;
+}
+
+.pregunta summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Se quita el triángulo que pone el navegador (Chrome y Safari) */
+.pregunta summary::-webkit-details-marker {
+  display: none;
+}
+
+/* En su lugar, un "+" a la derecha que pasa a "−" cuando la pregunta está abierta.
+   Va dentro de un círculo que solo se rellena al pasar el ratón o con la pregunta abierta */
+.pregunta summary::after {
+  content: "+";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #2B7A78;
+  transition: all 0.2s;
+}
+
+.pregunta[open] summary::after {
+  content: "−";
+}
+
+/* Al pasar el ratón y con la pregunta abierta (la que se ha pulsado):
+   la pregunta en turquesa y el círculo relleno de turquesa */
+.pregunta summary {
+  transition: color 0.2s;
+}
+
+.pregunta summary:hover,
+.pregunta[open] summary {
+  color: #2B7A78;
+}
+
+.pregunta summary:hover::after,
+.pregunta[open] summary::after {
+  background-color: #2B7A78;
+  color: #FFFFFF;
+}
+
+/* Al pulsar con el ratón no se marca nada. El marco menta solo sale al llegar
+   con el teclado (tecla Tab): para eso es :focus-visible en lugar de :focus.
+   Rodea toda la tarjeta (con :has) y no solo la línea de la pregunta */
+.pregunta summary:focus {
+  outline: none;
+}
+
+.pregunta:has(summary:focus-visible) {
+  outline: 3px solid #7ED9C3;
+  outline-offset: 2px;
+}
+
+.pregunta p {
+  padding: 0 24px 20px 24px;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #4E5A5E;
+}
+
+
+/* =====================================================================
+   14. SOLICITUDES DE ALQUILER
+   ===================================================================== */
+
+/* --- Resumen del inmueble en el formulario de solicitar alquiler --- */
+.resumen-inmueble {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background-color: #F2FBF8;
+  border: 1px solid #CFF3EA;
+  border-radius: 16px;
+}
+
+.foto-resumen {
+  display: block;
+  flex-shrink: 0;
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  background-color: #CFF3EA;
+}
+
+.resumen-inmueble h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.resumen-inmueble p {
+  font-size: 1rem;
+  color: #4E5A5E;
+}
+
+.resumen-inmueble .precio-resumen {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #17252A;
+  margin: 4px 0 6px 0;
+}
+
+.resumen-inmueble a {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2B7A78;
+  text-decoration: none;
+}
+
+.resumen-inmueble a:hover {
+  text-decoration: underline;
+}
+
+/* --- Tarjetas de solicitud (página del propietario) --- */
+
+/* Mensaje que ha escrito la persona: en cursiva, como una cita,
+   con una línea fina encima como las de las filas de datos */
+.mensaje-solicitud {
+  font-style: italic;
+  margin: 0 24px;
+  padding: 16px 0 20px 0;
+  border-top: 1px solid #CFF3EA;
+}
+
+/* Fila de abajo de cada tarjeta: los botones o la frase de "Aceptaste / Rechazaste" */
+.acciones-solicitud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0 24px 24px 24px;
+}
+
+.nota-solicitud {
+  font-size: 1rem;
+  color: #667274;
+}
+
+/* Nombre de la persona con las estrellas de la solvencia al lado */
+.nombre-solicitud {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+/* Solvencia en estrellas: las llenas doradas y las vacías grises */
+.estrellas {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.estrellas-llenas,
+.estrellas-vacias {
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.estrellas-llenas {
+  color: #E8A317;
+}
+
+.estrellas-vacias {
+  color: #D9DEDF;
+}
+
+/* Botón "?" de la fila "Solvencia": círculo con borde, que se rellena al pasar el ratón
+   (igual que el "+" de las preguntas frecuentes) */
+.ayuda-solvencia {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 6px;
+  padding: 0;
+  border: 1px solid #2B7A78;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  color: #2B7A78;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ayuda-solvencia:hover,
+.ayuda-solvencia[aria-expanded="true"] {
+  background-color: #2B7A78;
+  color: #FFFFFF;
+}
+
+.ayuda-solvencia:focus-visible {
+  outline: 3px solid #7ED9C3;
+  outline-offset: 2px;
+}
+
+/* Explicación que enseña el botón "?" */
+.explicacion-solvencia {
+  margin: 4px 24px 16px 24px;
+  padding: 12px 16px;
+  background-color: #F2FBF8;
+  border: 1px solid #CFF3EA;
+  border-radius: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4E5A5E;
+}
+
+.explicacion-solvencia p + p {
+  margin-top: 8px;
+}
+
+/* Lista de la explicación: una fila por cada número de estrellas */
+.escala-solvencia {
+  list-style: none;
+  margin: 8px 0 0 0;
+  padding: 0;
+}
+
+.escala-solvencia li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.escala-solvencia .estrellas-llenas,
+.escala-solvencia .estrellas-vacias {
+  font-size: 1rem;
+}
+
+/* La fila que le toca a la persona: fondo menta y en negrita */
+.escala-solvencia .nivel-actual {
+  background-color: #CFF3EA;
+  color: #17252A;
+  font-weight: 700;
+}
+
+.escala-solvencia .nivel-actual strong {
+  color: #17504E;
+}
+
+
+/* =====================================================================
+   15. RECUPERAR CONTRASEÑA, SUBIR JUSTIFICANTE Y MI PERFIL
+   ===================================================================== */
+
+/* Caja verde de "Revisa tu correo" (recuperar contraseña) */
+.mensaje-exito {
+  padding: 20px 24px;
+  background-color: #CFF3EA;
+  border: 1px solid #7ED9C3;
+  border-radius: 16px;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.mensaje-exito p + p {
+  margin-top: 8px;
+}
+
+/* Datos del recibo encima del formulario de subir justificante */
+.resumen-recibo {
+  padding: 4px 20px;
+  margin-bottom: 24px;
+  background-color: #F2FBF8;
+  border: 1px solid #CFF3EA;
+  border-radius: 16px;
+}
+
+/* El primer dato no lleva la línea de arriba (ya está el borde de la caja) */
+.resumen-recibo .dato-reserva:first-child {
+  border-top: none;
+}
+
+/* Caja de texto desactivada (el DNI en "Mi perfil") */
+.caja-texto:disabled {
+  background-color: #F2FBF8;
+  border-color: #CFF3EA;
+  color: #4E5A5E;
+  cursor: not-allowed;
+}
+
+/* Foto de perfil en "Mi perfil": vista previa redonda a la izquierda y botones a la derecha */
+.zona-foto-perfil {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  padding: 0 24px 24px 24px;
+}
+
+.vista-foto-perfil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background-color: #2B7A78;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.vista-foto-perfil img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.botones-foto-perfil {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Texto de ayuda debajo de un campo */
+.nota-campo {
+  font-size: 0.875rem;
+  color: #667274;
+  margin-top: 4px;
+  margin-bottom: 14px;
+}
+
+
+/* =====================================================================
+   16. VERSIÓN MÓVIL
    ===================================================================== */
 
 /* --- Pantallas medianas (tabletas, hasta 1100 px) --- */
@@ -1327,8 +2180,14 @@ fieldset.grupo-campo {
   /* Publicar inmueble: los campos en fila pasan a una sola columna */
   .fila-dos,
   .fila-tres,
-  .grupo-checks {
+  .grupo-checks,
+  .cuadricula-datos {
     grid-template-columns: 1fr;
+  }
+
+  /* Mensajes: las burbujas ocupan más ancho */
+  .burbuja {
+    max-width: 90%;
   }
 
   /* Detalle de inmueble: foto más baja, características en una columna y cajas con menos relleno */
@@ -1343,6 +2202,38 @@ fieldset.grupo-campo {
   .detalle-seccion,
   .tarjeta-reserva {
     padding: 24px;
+  }
+
+  /* ¿Cómo funciona?: pasos con menos relleno y número más pequeño */
+  .paso {
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .numero-paso {
+    width: 40px;
+    height: 40px;
+    font-size: 1.125rem;
+  }
+
+  .paso h3 {
+    margin-top: 6px;
+  }
+
+  .seccion-pasos h2,
+  .preguntas h2 {
+    font-size: 1.75rem;
+  }
+
+  /* Solicitar alquiler: la foto del resumen encima del texto */
+  .resumen-inmueble {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .foto-resumen {
+    width: 100%;
+    height: 160px;
   }
 }
 

@@ -5,13 +5,14 @@
      PANEL DEL PROPIETARIO (dashboard-propietario.html)
 
      BLOQUES:
-     1. Cabecera (logo, menú, saludo y botón de cerrar sesión)
+     1. Cabecera (logo, menú, saludo y menú de perfil)
      2. Contenido principal
         2.1 Tarjetas de resumen
-        2.2 Mis inmuebles
-        2.3 Últimos pagos
-        2.4 Últimas incidencias
-        2.5 Mensajes recientes
+        2.2 Solicitudes pendientes
+        2.3 Mis inmuebles
+        2.4 Últimos pagos
+        2.5 Últimas incidencias
+        2.6 Mensajes recientes
      3. Pie de página
      4. Acceso a las vistas de demo (provisional)
      ==================================================================== -->
@@ -36,15 +37,29 @@
       <nav>
         <a class="activo" href="dashboard-propietario.html">Inicio</a>
         <a href="mis-inmuebles.html">Mis inmuebles</a>
-        <a href="#">Contratos</a>
-        <a href="#">Pagos</a>
-        <a href="#">Incidencias</a>
+        <a href="contratos-propietario.html">Contratos</a>
+        <a href="pagos-propietario.html">Pagos</a>
+        <a href="incidencias-propietario.html">Incidencias</a>
+        <a href="mensajes-propietario.html">Mensajes</a>
       </nav>
 
-      <!-- Saludo y botón -->
+      <!-- Saludo y menú de perfil: el botón con las iniciales abre el submenú
+           (datos de la cuenta, Mi perfil y Cerrar sesión). Bloque 25 del JavaScript.
+           Si la persona ha puesto foto de perfil, el botón la enseña en lugar de las iniciales (bloque 26) -->
       <div class="acceso">
-        <span class="saludo">Hola, <strong id="nombre-usuario">Propietario</strong></span>
-        <a class="boton boton-contorno" href="index.html">Cerrar sesión</a>
+        <span class="saludo">Hola, <strong id="nombre-usuario">Carlos</strong></span>
+        <div class="menu-perfil" data-rol="propietario">
+          <button type="button" class="boton-perfil" id="boton-perfil" data-iniciales="CM" aria-expanded="false" aria-controls="submenu-perfil" aria-label="Menú de perfil" title="Menú de perfil">CM</button>
+          <div class="submenu-perfil" id="submenu-perfil" hidden>
+            <div class="datos-perfil">
+              <strong id="submenu-nombre">Carlos Martínez</strong>
+              <span id="submenu-email">carlos.martinez@correo.es</span>
+              <span class="insignia insignia-contorno">Cuenta de propietario</span>
+            </div>
+            <a href="perfil-propietario.html">Mi perfil</a>
+            <a class="cerrar-sesion" href="index.html">Cerrar sesión</a>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -85,7 +100,44 @@
 
     </section>
 
-    <!-- 2.2 MIS INMUEBLES -->
+    <!-- 2.2 SOLICITUDES PENDIENTES -->
+    <section class="seccion-dashboard">
+      <div class="cabecera-seccion">
+        <h3>Solicitudes pendientes</h3>
+        <a href="solicitudes-propietario.html">Ver todas</a>
+      </div>
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Solicitante</th>
+              <th>Inmueble</th>
+              <th>Fecha de entrada</th>
+              <th>Enviada el</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Laura Sánchez</td>
+              <td>Apartamento luminoso</td>
+              <td>01/06/2026</td>
+              <td>05/05/2026</td>
+              <td><span class="insignia insignia-contorno">Pendiente</span></td>
+            </tr>
+            <tr>
+              <td>Pablo Ruiz</td>
+              <td>Apartamento luminoso</td>
+              <td>15/06/2026</td>
+              <td>03/05/2026</td>
+              <td><span class="insignia insignia-contorno">Pendiente</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2.3 MIS INMUEBLES -->
     <section class="seccion-dashboard">
       <div class="cabecera-seccion">
         <h3>Mis inmuebles</h3>
@@ -108,32 +160,32 @@
               <td>Madrid</td>
               <td>950 €</td>
               <td><span class="insignia insignia-ok">Alquilado</span></td>
-              <td><a href="detalle-inmueble.html?id=1">Ver</a><a href="#">Editar</a></td>
+              <td><a href="detalle-inmueble.html?id=1">Ver</a><a href="editar-inmueble.html?id=1">Editar</a></td>
             </tr>
             <tr>
               <td>Apartamento luminoso</td>
               <td>Barcelona</td>
               <td>1.100 €</td>
               <td><span class="insignia insignia-contorno">Disponible</span></td>
-              <td><a href="detalle-inmueble.html?id=2">Ver</a><a href="#">Editar</a></td>
+              <td><a href="detalle-inmueble.html?id=2">Ver</a><a href="editar-inmueble.html?id=2">Editar</a><a href="solicitudes-propietario.html">Solicitudes</a></td>
             </tr>
             <tr>
               <td>Estudio reformado</td>
               <td>Valencia</td>
               <td>650 €</td>
               <td><span class="insignia insignia-ok">Alquilado</span></td>
-              <td><a href="detalle-inmueble.html?id=3">Ver</a><a href="#">Editar</a></td>
+              <td><a href="detalle-inmueble.html?id=3">Ver</a><a href="editar-inmueble.html?id=3">Editar</a></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- 2.3 ÚLTIMOS PAGOS -->
+    <!-- 2.4 ÚLTIMOS PAGOS -->
     <section class="seccion-dashboard">
       <div class="cabecera-seccion">
         <h3>Últimos pagos</h3>
-        <a href="#">Ver todos</a>
+        <a href="pagos-propietario.html">Ver todos</a>
       </div>
       <div class="tabla-contenedor">
         <table class="tabla">
@@ -166,11 +218,11 @@
       </div>
     </section>
 
-    <!-- 2.4 ÚLTIMAS INCIDENCIAS -->
+    <!-- 2.5 ÚLTIMAS INCIDENCIAS -->
     <section class="seccion-dashboard">
       <div class="cabecera-seccion">
         <h3>Últimas incidencias</h3>
-        <a href="#">Ver todas</a>
+        <a href="incidencias-propietario.html">Ver todas</a>
       </div>
       <div class="tabla-contenedor">
         <table class="tabla">
@@ -203,11 +255,11 @@
       </div>
     </section>
 
-    <!-- 2.5 MENSAJES RECIENTES -->
+    <!-- 2.6 MENSAJES RECIENTES -->
     <section class="seccion-dashboard">
       <div class="cabecera-seccion">
         <h3>Mensajes recientes</h3>
-        <a href="#">Ver todos</a>
+        <a href="mensajes-propietario.html">Ver todos</a>
       </div>
       <ul class="lista-mensajes">
         <li class="mensaje">
@@ -236,9 +288,9 @@
       <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
       <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
       <nav>
-        <a href="#">Aviso legal</a>
-        <a href="#">Privacidad</a>
-        <a href="#">Contacto</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
       </nav>
     </div>
   </footer>
