@@ -5,7 +5,7 @@
      PANEL DEL INQUILINO (dashboard-inquilino.html)
 
      BLOQUES:
-     1. Cabecera (logo, menú, saludo y botón de cerrar sesión)
+     1. Cabecera (logo, menú, saludo y menú de perfil)
      2. Contenido principal
         2.1 Tarjetas de resumen
         2.2 Mi contrato activo
@@ -35,16 +35,29 @@
       <!-- Menú -->
       <nav>
         <a class="activo" href="dashboard-inquilino.html">Inicio</a>
-        <a href="#">Mi contrato</a>
-        <a href="#">Pagos</a>
-        <a href="#">Incidencias</a>
-        <a href="#">Mensajes</a>
+        <a href="mi-contrato.html">Mi contrato</a>
+        <a href="pagos-inquilino.html">Pagos</a>
+        <a href="incidencias-inquilino.html">Incidencias</a>
+        <a href="mensajes-inquilino.html">Mensajes</a>
       </nav>
 
-      <!-- Saludo y botón -->
+      <!-- Saludo y menú de perfil: el botón con las iniciales abre el submenú
+           (datos de la cuenta, Mi perfil y Cerrar sesión). Bloque 25 del JavaScript.
+           Si la persona ha puesto foto de perfil, el botón la enseña en lugar de las iniciales (bloque 26) -->
       <div class="acceso">
-        <span class="saludo">Hola, <strong id="nombre-usuario">Inquilino</strong></span>
-        <a class="boton boton-contorno" href="index.html">Cerrar sesión</a>
+        <span class="saludo">Hola, <strong id="nombre-usuario">Juan</strong></span>
+        <div class="menu-perfil" data-rol="inquilino">
+          <button type="button" class="boton-perfil" id="boton-perfil" data-iniciales="JG" aria-expanded="false" aria-controls="submenu-perfil" aria-label="Menú de perfil" title="Menú de perfil">JG</button>
+          <div class="submenu-perfil" id="submenu-perfil" hidden>
+            <div class="datos-perfil">
+              <strong id="submenu-nombre">Juan García</strong>
+              <span id="submenu-email">juan.garcia@correo.es</span>
+              <span class="insignia insignia-contorno">Cuenta de inquilino</span>
+            </div>
+            <a href="perfil-inquilino.html">Mi perfil</a>
+            <a class="cerrar-sesion" href="index.html">Cerrar sesión</a>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -89,7 +102,7 @@
     <section class="seccion-dashboard">
       <div class="cabecera-seccion">
         <h3>Mi contrato activo</h3>
-        <a href="#">Ver contrato completo</a>
+        <a href="mi-contrato.html">Ver contrato completo</a>
       </div>
       <div class="tabla-contenedor">
         <table class="tabla">
@@ -121,7 +134,7 @@
     <section class="seccion-dashboard">
       <div class="cabecera-seccion">
         <h3>Últimos pagos</h3>
-        <a href="#">Ver todos</a>
+        <a href="pagos-inquilino.html">Ver todos</a>
       </div>
       <div class="tabla-contenedor">
         <table class="tabla">
@@ -150,7 +163,7 @@
               <td>01/06/2026</td>
               <td class="vacio">-</td>
               <td><span class="insignia insignia-contorno">Pendiente</span></td>
-              <td><a href="#">Subir justificante</a></td>
+              <td><a href="subir-justificante.html">Subir justificante</a></td>
             </tr>
           </tbody>
         </table>
@@ -161,7 +174,7 @@
     <section class="seccion-dashboard">
       <div class="cabecera-seccion">
         <h3>Mis incidencias</h3>
-        <a href="#">+ Nueva incidencia</a>
+        <a href="nueva-incidencia.html">+ Nueva incidencia</a>
       </div>
       <div class="tabla-contenedor">
         <table class="tabla">
@@ -180,7 +193,7 @@
               <td><span class="insignia insignia-alta">Alta</span></td>
               <td><span class="insignia insignia-contorno">Abierta</span></td>
               <td>02/05/2026</td>
-              <td><a href="#">Ver</a></td>
+              <td><a href="detalle-incidencia-inquilino.html?id=1">Ver</a></td>
             </tr>
           </tbody>
         </table>
@@ -191,7 +204,7 @@
     <section class="seccion-dashboard">
       <div class="cabecera-seccion">
         <h3>Mensajes recientes</h3>
-        <a href="#">Ver todos</a>
+        <a href="mensajes-inquilino.html">Ver todos</a>
       </div>
       <ul class="lista-mensajes">
         <li class="mensaje">
@@ -220,9 +233,9 @@
       <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
       <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
       <nav>
-        <a href="#">Aviso legal</a>
-        <a href="#">Privacidad</a>
-        <a href="#">Contacto</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
       </nav>
     </div>
   </footer>

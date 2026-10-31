@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     PÁGINA DE LOGIN (login.html)
+
+     BLOQUES:
+     1. Cabecera (logo, menú y botones)
+     2. Formulario de inicio de sesión
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Iniciar sesión</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="inmuebles.html">Inmuebles</a>
+        <a href="como-funciona.html">¿Cómo funciona?</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Botones -->
+      <div class="acceso">
+        <a class="boton boton-contorno" href="login.html">Iniciar sesión</a>
+        <a class="boton boton-blanco" href="registro.html">Registrarse</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. FORMULARIO DE LOGIN ==================== -->
+  <main class="pagina-formulario">
+
+    <section class="formulario-contenedor">
+      <h1>Iniciar sesión</h1>
+      <p class="subtitulo">Introduce tus datos para acceder a tu cuenta.</p>
+      <hr class="separador">
+
+      <!-- novalidate: el navegador no muestra sus avisos; se usan los mensajes de nuestro JavaScript -->
+      <form id="formulario-login" novalidate>
+
+        <!-- Correo electrónico -->
+        <div class="grupo-campo">
+          <label for="email-login">Correo electrónico</label>
+          <input class="caja-texto" type="email" id="email-login" name="email" placeholder="correo@ejemplo.com">
+          <span class="error" id="error-email-login"></span>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="grupo-campo">
+          <label for="contrasena-login">Contraseña</label>
+          <input class="caja-texto" type="password" id="contrasena-login" name="contrasena" placeholder="Tu contraseña">
+          <span class="error" id="error-contrasena-login"></span>
+        </div>
+
+        <!-- Enlace de contraseña olvidada -->
+        <p class="enlace-olvido">¿Has olvidado tu contraseña? <a href="recuperar-contrasena.html">Recupérala</a></p>
+
+        <!-- Botón y enlace al registro -->
+        <button type="submit" class="boton boton-primario boton-bloque">Entrar</button>
+
+        <p class="enlace-acceso">¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>
+
+      </form>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

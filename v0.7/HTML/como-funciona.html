@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     ¿CÓMO FUNCIONA? (como-funciona.html)
+
+     Guía paso a paso para usar AlquiTech, como propietario o como inquilino,
+     y preguntas frecuentes.
+     Se llega desde "¿Cómo funciona?" en el menú de la parte pública.
+
+     BLOQUES:
+     1. Cabecera (logo, menú y botones)
+     2. Contenido principal
+        2.1 Presentación
+        2.2 Pasos (botones para elegir el perfil y una lista de pasos por perfil)
+        2.3 Preguntas frecuentes
+        2.4 Llamada a la acción
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – ¿Cómo funciona?</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="inmuebles.html">Inmuebles</a>
+        <a class="activo" href="como-funciona.html">¿Cómo funciona?</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Botones -->
+      <div class="acceso">
+        <a class="boton boton-contorno" href="login.html">Iniciar sesión</a>
+        <a class="boton boton-blanco" href="registro.html">Registrarse</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main id="como-funciona">
+
+    <!-- 2.1 PRESENTACIÓN -->
+    <section class="inicio inicio-corto">
+      <span class="insignia-hero">Guía rápida</span>
+      <h1>¿Cómo funciona AlquiTech?</h1>
+      <p>Elige tu perfil y descubre, paso a paso, cómo gestionar tu alquiler desde un solo lugar.</p>
+    </section>
+
+    <!-- 2.2 PASOS -->
+    <section class="seccion-pasos">
+      <div class="contenedor">
+        <span class="etiqueta">Paso a paso</span>
+        <h2>Así se usa AlquiTech</h2>
+
+        <!-- Botones para elegir el perfil (el JavaScript enseña la lista elegida y esconde la otra) -->
+        <div class="selector-rol">
+          <button type="button" class="boton boton-secundario pestana activa" data-rol="propietario">Soy propietario</button>
+          <button type="button" class="boton boton-secundario pestana" data-rol="inquilino">Soy inquilino</button>
+        </div>
+
+        <!-- Pasos del propietario -->
+        <ol class="lista-pasos" data-rol="propietario">
+          <li class="paso">
+            <span class="numero-paso">1</span>
+            <div>
+              <h3>Crea tu cuenta</h3>
+              <p>Regístrate como propietario. Solo necesitas tu nombre, tu correo y tu DNI.</p>
+              <a class="enlace-paso" href="registro.html">Crear cuenta →</a>
+            </div>
+          </li>
+          <li class="paso">
+            <span class="numero-paso">2</span>
+            <div>
+              <h3>Publica tu inmueble</h3>
+              <p>Añade la dirección, el precio, las características y una foto. Tu anuncio aparecerá en el catálogo y lo podrás editar cuando quieras.</p>
+            </div>
+          </li>
+          <li class="paso">
+            <span class="numero-paso">3</span>
+            <div>
+              <h3>Firma el contrato con tu inquilino</h3>
+              <p>Cuando encuentres inquilino, el contrato queda guardado en la sección "Contratos" con las fechas, la cuota, la fianza y los documentos.</p>
+            </div>
+          </li>
+          <li class="paso">
+            <span class="numero-paso">4</span>
+            <div>
+              <h3>Controla los pagos</h3>
+              <p>Cada mes ves qué recibos están pagados y cuáles siguen pendientes, con el justificante de cada pago.</p>
+            </div>
+          </li>
+          <li class="paso">
+            <span class="numero-paso">5</span>
+            <div>
+              <h3>Resuelve las incidencias</h3>
+              <p>Si se rompe algo, tu inquilino te avisa desde la web. Tú cambias el estado de la incidencia y le escribes por la mensajería, sin usar otras aplicaciones.</p>
+            </div>
+          </li>
+        </ol>
+
+        <!-- Pasos del inquilino (escondidos al principio) -->
+        <ol class="lista-pasos" data-rol="inquilino" style="display:none;">
+          <li class="paso">
+            <span class="numero-paso">1</span>
+            <div>
+              <h3>Busca tu vivienda</h3>
+              <p>Mira el catálogo y filtra los inmuebles por ciudad y por precio. En cada anuncio verás las fotos, las características y la fianza.</p>
+              <a class="enlace-paso" href="inmuebles.html">Ver inmuebles →</a>
+            </div>
+          </li>
+          <li class="paso">
+            <span class="numero-paso">2</span>
+            <div>
+              <h3>Crea tu cuenta y solicita el alquiler</h3>
+              <p>Regístrate como inquilino y solicita el inmueble que te guste. El propietario recibirá tu solicitud.</p>
+            </div>
+          </li>
+          <li class="paso">
+            <span class="numero-paso">3</span>
+            <div>
+              <h3>Consulta tu contrato</h3>
+              <p>En "Mi contrato" tienes siempre a mano las fechas, la cuota mensual, las condiciones y los documentos para descargar.</p>
+            </div>
+          </li>
+          <li class="paso">
+            <span class="numero-paso">4</span>
+            <div>
+              <h3>Paga y guarda tus justificantes</h3>
+              <p>En "Pagos" ves los recibos de cada mes, cuáles has pagado y cuáles tienes pendientes.</p>
+            </div>
+          </li>
+          <li class="paso">
+            <span class="numero-paso">5</span>
+            <div>
+              <h3>Avisa de las averías</h3>
+              <p>Si algo no funciona, crea una incidencia y sigue su estado hasta que se resuelva. Y si tienes cualquier duda, escribe al propietario desde "Mensajes".</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 2.3 PREGUNTAS FRECUENTES (cada pregunta se abre y se cierra al pulsarla; no necesita JavaScript).
+         Todas tienen el mismo name="preguntas": así, al abrir una, el navegador cierra la que estaba abierta -->
+    <section class="preguntas">
+      <div class="contenedor">
+        <span class="etiqueta">Dudas</span>
+        <h2>Preguntas frecuentes</h2>
+
+        <div class="lista-preguntas">
+
+          <details class="pregunta" name="preguntas">
+            <summary>¿Cuánto cuesta registrarse?</summary>
+            <p>Nada. Crear una cuenta en AlquiTech es gratis, tanto para propietarios como para inquilinos.</p>
+          </details>
+
+          <details class="pregunta" name="preguntas">
+            <summary>¿Qué hago si se rompe algo en la vivienda?</summary>
+            <p>Entra en "Incidencias" y pulsa "Nueva incidencia". Indica qué ha pasado, la categoría y la prioridad. El propietario la recibe al momento y podrás ver cómo cambia su estado: abierta, en curso o resuelta.</p>
+          </details>
+
+          <details class="pregunta" name="preguntas">
+            <summary>¿Cómo sé si un pago ha llegado?</summary>
+            <p>En la sección "Pagos" cada recibo tiene su estado. Cuando el propietario confirma que lo ha recibido, pasa de "Pendiente" a "Pagado".</p>
+          </details>
+
+          <details class="pregunta" name="preguntas">
+            <summary>¿Puedo descargar mi contrato?</summary>
+            <p>Sí. En "Mi contrato" (inquilino) o en el detalle de cada contrato (propietario) está el botón para descargarlo, junto con el resto de documentos.</p>
+          </details>
+
+          <details class="pregunta" name="preguntas">
+            <summary>¿Mis datos están seguros?</summary>
+            <p>Solo el propietario y el inquilino de un mismo alquiler ven los datos que necesitan el uno del otro. Puedes leer todos los detalles en la <a href="privacidad.html">política de privacidad</a>.</p>
+          </details>
+
+          <details class="pregunta" name="preguntas">
+            <summary>Tengo otra duda, ¿cómo os escribo?</summary>
+            <p>Desde la página de <a href="contacto.html">contacto</a>. Te responderemos lo antes posible.</p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.4 LLAMADA A LA ACCIÓN -->
+    <section class="llamada-accion">
+      <h2>¿Empezamos?</h2>
+      <p>Crea tu cuenta y gestiona tu alquiler sin papeles.</p>
+      <div class="grupo-botones">
+        <a class="boton boton-primario" href="registro.html">Crear cuenta</a>
+        <a class="boton boton-secundario" href="inmuebles.html">Ver inmuebles</a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

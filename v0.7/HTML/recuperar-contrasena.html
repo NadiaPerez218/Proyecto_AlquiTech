@@ -2,11 +2,17 @@
 <html lang="es">
 
 <!-- ====================================================================
-     PÁGINA DE LOGIN (login.html)
+     RECUPERAR CONTRASEÑA (recuperar-contrasena.html)
+
+     Formulario para pedir un enlace con el que crear una contraseña nueva.
+     Se llega desde "¿Has olvidado tu contraseña? Recupérala" del login.
+     El JavaScript (bloque 21) valida el correo y enseña el mensaje de enviado.
 
      BLOQUES:
      1. Cabecera (logo, menú y botones)
-     2. Formulario de inicio de sesión
+     2. Formulario de recuperar contraseña
+        2.1 Correo electrónico y botón
+        2.2 Mensaje de "enlace enviado" (escondido al principio)
      3. Pie de página
      4. Acceso a las vistas de demo (provisional)
      ==================================================================== -->
@@ -14,7 +20,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AlquiTech – Iniciar sesión</title>
+  <title>AlquiTech – Recuperar contraseña</title>
   <link rel="stylesheet" href="../CSS/style.css">
 </head>
 
@@ -31,8 +37,8 @@
       <nav>
         <a href="index.html">Inicio</a>
         <a href="inmuebles.html">Inmuebles</a>
-        <a href="index.html#funcionalidades">¿Cómo funciona?</a>
-        <a href="#">Contacto</a>
+        <a href="como-funciona.html">¿Cómo funciona?</a>
+        <a href="contacto.html">Contacto</a>
       </nav>
 
       <!-- Botones -->
@@ -45,40 +51,36 @@
   </header>
 
 
-  <!-- ==================== 2. FORMULARIO DE LOGIN ==================== -->
+  <!-- ==================== 2. FORMULARIO DE RECUPERAR CONTRASEÑA ==================== -->
   <main class="pagina-formulario">
 
     <section class="formulario-contenedor">
-      <h1>Iniciar sesión</h1>
-      <p class="subtitulo">Introduce tus datos para acceder a tu cuenta.</p>
+      <h1>Recuperar contraseña</h1>
+      <p class="subtitulo">Escribe el correo con el que te registraste y te enviaremos un enlace para crear una contraseña nueva.</p>
       <hr class="separador">
 
+      <!-- 2.1 CORREO ELECTRÓNICO Y BOTÓN -->
       <!-- novalidate: el navegador no muestra sus avisos; se usan los mensajes de nuestro JavaScript -->
-      <form id="formulario-login" novalidate>
+      <form id="formulario-recuperar" novalidate>
 
-        <!-- Correo electrónico -->
         <div class="grupo-campo">
-          <label for="email-login">Correo electrónico</label>
-          <input class="caja-texto" type="email" id="email-login" name="email" placeholder="correo@ejemplo.com">
-          <span class="error" id="error-email-login"></span>
+          <label for="email-recuperar">Correo electrónico</label>
+          <input class="caja-texto" type="email" id="email-recuperar" name="email" placeholder="correo@ejemplo.com">
+          <span class="error" id="error-email-recuperar"></span>
         </div>
 
-        <!-- Contraseña -->
-        <div class="grupo-campo">
-          <label for="contrasena-login">Contraseña</label>
-          <input class="caja-texto" type="password" id="contrasena-login" name="contrasena" placeholder="Tu contraseña">
-          <span class="error" id="error-contrasena-login"></span>
-        </div>
-
-        <!-- Enlace de contraseña olvidada -->
-        <p class="enlace-olvido">¿Has olvidado tu contraseña? <a href="#">Recupérala</a></p>
-
-        <!-- Botón y enlace al registro -->
-        <button type="submit" class="boton boton-primario boton-bloque">Entrar</button>
-
-        <p class="enlace-acceso">¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>
+        <button type="submit" class="boton boton-primario boton-bloque">Enviar enlace</button>
 
       </form>
+
+      <!-- 2.2 MENSAJE DE "ENLACE ENVIADO" (el JavaScript lo enseña y esconde el formulario).
+           Dice lo mismo exista o no el correo: así nadie puede averiguar quién tiene cuenta -->
+      <div id="recuperar-enviado" class="mensaje-exito" style="display:none;">
+        <p><strong>Revisa tu correo.</strong></p>
+        <p>Si <span id="recuperar-correo"></span> está registrado en AlquiTech, recibirás en unos minutos un enlace para crear una contraseña nueva. Mira también en la carpeta de correo no deseado.</p>
+      </div>
+
+      <p class="enlace-acceso"><a href="login.html">Volver a iniciar sesión</a></p>
     </section>
 
   </main>
@@ -90,9 +92,9 @@
       <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
       <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
       <nav>
-        <a href="#">Aviso legal</a>
-        <a href="#">Privacidad</a>
-        <a href="#">Contacto</a>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
       </nav>
     </div>
   </footer>
