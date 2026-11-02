@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     DETALLE DE INCIDENCIA DEL PROPIETARIO (detalle-incidencia-propietario.html)
+
+     Todos los datos de una incidencia que ha avisado un inquilino,
+     los pasos que se han dado y un formulario para cambiar el estado.
+     Se llega desde los enlaces "Ver" y "Actualizar" de la tabla de
+     incidencias del propietario ("Actualizar" baja directamente al formulario).
+     La dirección lleva el número de la incidencia, por ejemplo:
+     detalle-incidencia-propietario.html?id=1
+     El JavaScript (bloque 14) busca la incidencia y rellena la página.
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y menú de perfil)
+     2. Contenido principal
+        2.1 Título y botón de escribir al inquilino
+        2.2 Datos de la incidencia
+        2.3 Descripción
+        2.4 Seguimiento
+        2.5 Formulario para cambiar el estado
+        2.6 Mensaje de "incidencia no encontrada"
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Incidencia</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-propietario.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="dashboard-propietario.html">Inicio</a>
+        <a href="mis-inmuebles.html">Mis inmuebles</a>
+        <a href="contratos-propietario.html">Contratos</a>
+        <a href="pagos-propietario.html">Pagos</a>
+        <a class="activo" href="incidencias-propietario.html">Incidencias</a>
+        <a href="mensajes-propietario.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y menú de perfil: el botón con las iniciales abre el submenú
+           (datos de la cuenta, Mi perfil y Cerrar sesión). Bloque 25 del JavaScript.
+           Si la persona ha puesto foto de perfil, el botón la enseña en lugar de las iniciales (bloque 26) -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Carlos</strong></span>
+        <div class="menu-perfil" data-rol="propietario">
+          <button type="button" class="boton-perfil" id="boton-perfil" data-iniciales="CM" aria-expanded="false" aria-controls="submenu-perfil" aria-label="Menú de perfil" title="Menú de perfil">CM</button>
+          <div class="submenu-perfil" id="submenu-perfil" hidden>
+            <div class="datos-perfil">
+              <strong id="submenu-nombre">Carlos Martínez</strong>
+              <span id="submenu-email">carlos.martinez@correo.es</span>
+              <span class="insignia insignia-contorno">Cuenta de propietario</span>
+            </div>
+            <a href="perfil-propietario.html">Mi perfil</a>
+            <a class="cerrar-sesion" href="index.html">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard" id="detalle-incidencia">
+
+    <!-- Enlace para volver al listado -->
+    <a class="enlace-volver" href="incidencias-propietario.html">← Volver a incidencias</a>
+
+    <!-- Todo este bloque se esconde si la incidencia no existe (ver 2.6) -->
+    <div id="detalle-contenido">
+
+      <!-- 2.1 TÍTULO Y BOTÓN DE ESCRIBIR AL INQUILINO (el JavaScript escribe el título) -->
+      <div class="cabecera-pagina">
+        <h1 id="incidencia-titulo">Incidencia</h1>
+        <a class="boton boton-secundario" href="mensajes-propietario.html">Escribir al inquilino</a>
+      </div>
+
+      <!-- 2.2 DATOS DE LA INCIDENCIA -->
+      <section class="seccion-dashboard">
+        <div class="cabecera-seccion">
+          <h3>Datos de la incidencia</h3>
+        </div>
+        <div class="cuadricula-datos">
+          <p class="dato-reserva"><span>Referencia</span> <strong id="incidencia-referencia"></strong></p>
+          <p class="dato-reserva"><span>Fecha de aviso</span> <strong id="incidencia-fecha"></strong></p>
+          <p class="dato-reserva"><span>Inmueble</span> <strong id="incidencia-inmueble"></strong></p>
+          <p class="dato-reserva"><span>Categoría</span> <strong id="incidencia-categoria"></strong></p>
+          <p class="dato-reserva"><span>Inquilino</span> <strong id="incidencia-inquilino"></strong></p>
+          <p class="dato-reserva"><span>Prioridad</span> <span class="insignia" id="incidencia-prioridad"></span></p>
+          <p class="dato-reserva"><span>Propietario</span> <strong id="incidencia-propietario"></strong></p>
+          <p class="dato-reserva"><span>Estado</span> <span class="insignia" id="incidencia-estado"></span></p>
+        </div>
+      </section>
+
+      <!-- 2.3 DESCRIPCIÓN -->
+      <section class="seccion-dashboard">
+        <div class="cabecera-seccion">
+          <h3>Descripción</h3>
+        </div>
+        <p class="texto-seccion" id="incidencia-descripcion"></p>
+      </section>
+
+      <!-- 2.4 SEGUIMIENTO (el JavaScript crea la lista) -->
+      <section class="seccion-dashboard">
+        <div class="cabecera-seccion">
+          <h3>Seguimiento</h3>
+        </div>
+        <ul class="lista-mensajes" id="incidencia-seguimiento"></ul>
+      </section>
+
+      <!-- 2.5 FORMULARIO PARA CAMBIAR EL ESTADO -->
+      <section class="seccion-dashboard" id="actualizar-estado">
+        <div class="cabecera-seccion">
+          <h3>Actualizar estado</h3>
+        </div>
+
+        <!-- novalidate: el navegador no muestra sus avisos; se usan los mensajes de nuestro JavaScript -->
+        <form class="formulario-seccion" id="formulario-estado" novalidate>
+
+          <!-- Nuevo estado (el valor de cada opción es igual que su texto,
+               para poder compararlo con el estado que ya tiene la incidencia) -->
+          <div class="grupo-campo">
+            <label for="nuevo-estado">Nuevo estado</label>
+            <select class="caja-texto" id="nuevo-estado" name="estado">
+              <option value="">Selecciona un estado</option>
+              <option value="Abierta">Abierta</option>
+              <option value="En curso">En curso</option>
+              <option value="Resuelta">Resuelta</option>
+            </select>
+            <span class="error" id="error-nuevo-estado"></span>
+          </div>
+
+          <!-- Comentario (opcional) -->
+          <div class="grupo-campo">
+            <label for="comentario-estado">Comentario para el inquilino (opcional)</label>
+            <textarea class="caja-texto caja-area" id="comentario-estado" name="comentario" placeholder="Ejemplo: El fontanero pasará el lunes por la mañana."></textarea>
+          </div>
+
+          <button type="submit" class="boton boton-primario">Guardar estado</button>
+
+        </form>
+      </section>
+
+    </div>
+
+    <!-- 2.6 MENSAJE DE "INCIDENCIA NO ENCONTRADA" (se enseña desde el JavaScript) -->
+    <p id="detalle-no-encontrado" class="sin-resultados" style="display:none;">
+      No se ha encontrado la incidencia que buscas.
+    </p>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     CATÁLOGO DE INMUEBLES (inmuebles.html)
+
+     BLOQUES:
+     1. Cabecera (logo, menú y botones)
+     2. Contenido principal
+        2.1 Filtros (ciudad y precio)
+        2.2 Texto de resultados
+        2.3 Tarjetas de inmuebles
+        2.4 Mensaje de "sin resultados"
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Catálogo de inmuebles</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a class="activo" href="inmuebles.html">Inmuebles</a>
+        <a href="como-funciona.html">¿Cómo funciona?</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Botones -->
+      <div class="acceso">
+        <a class="boton boton-contorno" href="login.html">Iniciar sesión</a>
+        <a class="boton boton-blanco" href="registro.html">Registrarse</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor catalogo">
+
+    <h1>Catálogo de inmuebles</h1>
+
+    <!-- 2.1 FILTROS -->
+    <section class="filtros">
+
+      <!-- Filtro de ciudad -->
+      <div class="grupo-filtro">
+        <label for="filtro-ciudad">Ciudad</label>
+        <select class="caja-texto" id="filtro-ciudad">
+          <option value="">Todas</option>
+          <option value="madrid">Madrid</option>
+          <option value="barcelona">Barcelona</option>
+          <option value="valencia">Valencia</option>
+          <option value="sevilla">Sevilla</option>
+        </select>
+      </div>
+
+      <!-- Filtro de precio mínimo -->
+      <div class="grupo-filtro">
+        <label for="filtro-precio-min">Precio mínimo</label>
+        <input class="caja-texto" type="number" id="filtro-precio-min" placeholder="0 €" min="0">
+      </div>
+
+      <!-- Filtro de precio máximo -->
+      <div class="grupo-filtro">
+        <label for="filtro-precio-max">Precio máximo</label>
+        <input class="caja-texto" type="number" id="filtro-precio-max" placeholder="Sin límite" min="0">
+      </div>
+
+      <!-- Botones -->
+      <button type="button" class="boton boton-primario" id="boton-filtrar">Filtrar</button>
+      <button type="button" class="boton boton-secundario" id="boton-limpiar">Limpiar</button>
+
+    </section>
+
+    <!-- 2.2 TEXTO DE RESULTADOS -->
+    <p id="texto-resultados" class="texto-resultados">Mostrando 4 resultados</p>
+
+    <!-- 2.3 TARJETAS DE INMUEBLES -->
+    <div class="cuadricula-inmuebles" id="cuadricula-inmuebles">
+
+      <!-- Inmueble 1 -->
+      <div class="tarjeta-inmueble" data-ciudad="madrid" data-precio="950">
+        <img class="imagen-inmueble" src="../IMG/piso-centro-madrid.png" alt="Salón del piso en el centro de Madrid">
+        <div class="info-inmueble">
+          <h3>Piso en el centro</h3>
+          <p class="ubicacion">Madrid</p>
+          <p class="detalles">3 hab. · 2 baños · 90 m²</p>
+          <p class="precio">950 € / mes</p>
+          <a href="detalle-inmueble.html?id=1" class="boton boton-secundario">Ver inmueble</a>
+        </div>
+      </div>
+
+      <!-- Inmueble 2 -->
+      <div class="tarjeta-inmueble" data-ciudad="barcelona" data-precio="1100">
+        <img class="imagen-inmueble" src="../IMG/apartamento-luminoso-barcelona.png" alt="Salón del apartamento luminoso de Barcelona">
+        <div class="info-inmueble">
+          <h3>Apartamento luminoso</h3>
+          <p class="ubicacion">Barcelona</p>
+          <p class="detalles">2 hab. · 1 baño · 65 m²</p>
+          <p class="precio">1.100 € / mes</p>
+          <a href="detalle-inmueble.html?id=2" class="boton boton-secundario">Ver inmueble</a>
+        </div>
+      </div>
+
+      <!-- Inmueble 3 -->
+      <div class="tarjeta-inmueble" data-ciudad="valencia" data-precio="650">
+        <img class="imagen-inmueble" src="../IMG/estudio-reformado-valencia.png" alt="Estudio reformado de Valencia">
+        <div class="info-inmueble">
+          <h3>Estudio reformado</h3>
+          <p class="ubicacion">Valencia</p>
+          <p class="detalles">1 hab. · 1 baño · 40 m²</p>
+          <p class="precio">650 € / mes</p>
+          <a href="detalle-inmueble.html?id=3" class="boton boton-secundario">Ver inmueble</a>
+        </div>
+      </div>
+
+      <!-- Inmueble 4 -->
+      <div class="tarjeta-inmueble" data-ciudad="sevilla" data-precio="800">
+        <img class="imagen-inmueble" src="../IMG/piso-terraza-sevilla.png" alt="Terraza del piso de Sevilla">
+        <div class="info-inmueble">
+          <h3>Piso con terraza</h3>
+          <p class="ubicacion">Sevilla</p>
+          <p class="detalles">2 hab. · 1 baño · 75 m²</p>
+          <p class="precio">800 € / mes</p>
+          <a href="detalle-inmueble.html?id=4" class="boton boton-secundario">Ver inmueble</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2.4 MENSAJE DE "SIN RESULTADOS" (se enseña desde el JavaScript) -->
+    <p id="sin-resultados" class="sin-resultados" style="display:none;">
+      No se han encontrado inmuebles con los filtros seleccionados.
+    </p>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

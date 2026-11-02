@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     DETALLE DE CONTRATO DEL PROPIETARIO (detalle-contrato.html)
+
+     Todos los datos de uno de los contratos de alquiler del propietario.
+     Se llega desde el enlace "Ver contrato" de la tabla de contratos.
+     La dirección lleva el número del contrato, por ejemplo:
+     detalle-contrato.html?id=1
+     El JavaScript (bloque 15) busca el contrato y rellena la página.
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y menú de perfil)
+     2. Contenido principal
+        2.1 Título y botón de descargar el contrato
+        2.2 Tarjetas de resumen
+        2.3 Datos del contrato y del inquilino
+        2.4 Condiciones principales
+        2.5 Documentos
+        2.6 Mensaje de "contrato no encontrado"
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Contrato</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-propietario.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="dashboard-propietario.html">Inicio</a>
+        <a href="mis-inmuebles.html">Mis inmuebles</a>
+        <a class="activo" href="contratos-propietario.html">Contratos</a>
+        <a href="pagos-propietario.html">Pagos</a>
+        <a href="incidencias-propietario.html">Incidencias</a>
+        <a href="mensajes-propietario.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y menú de perfil: el botón con las iniciales abre el submenú
+           (datos de la cuenta, Mi perfil y Cerrar sesión). Bloque 25 del JavaScript.
+           Si la persona ha puesto foto de perfil, el botón la enseña en lugar de las iniciales (bloque 26) -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Carlos</strong></span>
+        <div class="menu-perfil" data-rol="propietario">
+          <button type="button" class="boton-perfil" id="boton-perfil" data-iniciales="CM" aria-expanded="false" aria-controls="submenu-perfil" aria-label="Menú de perfil" title="Menú de perfil">CM</button>
+          <div class="submenu-perfil" id="submenu-perfil" hidden>
+            <div class="datos-perfil">
+              <strong id="submenu-nombre">Carlos Martínez</strong>
+              <span id="submenu-email">carlos.martinez@correo.es</span>
+              <span class="insignia insignia-contorno">Cuenta de propietario</span>
+            </div>
+            <a href="perfil-propietario.html">Mi perfil</a>
+            <a class="cerrar-sesion" href="index.html">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard" id="detalle-contrato">
+
+    <!-- Enlace para volver al listado -->
+    <a class="enlace-volver" href="contratos-propietario.html">← Volver a contratos</a>
+
+    <!-- Todo este bloque se esconde si el contrato no existe (ver 2.6) -->
+    <div id="detalle-contenido">
+
+      <!-- 2.1 TÍTULO Y BOTÓN DE DESCARGAR EL CONTRATO (el JavaScript escribe el título) -->
+      <div class="cabecera-pagina">
+        <h1 id="contrato-titulo">Contrato</h1>
+        <!-- Pendiente: el archivo del contrato vendrá del backend -->
+        <a class="boton boton-primario" href="#">Descargar contrato</a>
+      </div>
+
+      <!-- 2.2 TARJETAS DE RESUMEN -->
+      <section class="resumen">
+
+        <div class="tarjeta-resumen">
+          <h3>Estado</h3>
+          <p class="cifra" id="resumen-estado"></p>
+          <p class="descripcion" id="resumen-fin"></p>
+        </div>
+
+        <div class="tarjeta-resumen">
+          <h3>Cuota mensual</h3>
+          <p class="cifra" id="resumen-cuota"></p>
+          <p class="descripcion">se paga el día 1 de cada mes</p>
+        </div>
+
+        <div class="tarjeta-resumen">
+          <h3>Fianza</h3>
+          <p class="cifra" id="resumen-fianza"></p>
+          <p class="descripcion">una mensualidad</p>
+        </div>
+
+        <div class="tarjeta-resumen">
+          <h3>Duración</h3>
+          <p class="cifra" id="resumen-duracion"></p>
+          <p class="descripcion">meses de contrato</p>
+        </div>
+
+      </section>
+
+      <!-- 2.3 DATOS DEL CONTRATO Y DEL INQUILINO -->
+      <section class="seccion-dashboard">
+        <div class="cabecera-seccion">
+          <h3>Datos del contrato</h3>
+          <!-- El JavaScript pone el número del inmueble en el enlace -->
+          <a id="contrato-ver-inmueble" href="#">Ver inmueble</a>
+        </div>
+        <div class="cuadricula-datos">
+          <p class="dato-reserva"><span>Inmueble</span> <strong id="contrato-inmueble"></strong></p>
+          <p class="dato-reserva"><span>Ciudad</span> <strong id="contrato-ciudad"></strong></p>
+          <p class="dato-reserva"><span>Inquilino</span> <strong id="contrato-inquilino"></strong></p>
+          <p class="dato-reserva"><span>Estado</span> <span class="insignia" id="contrato-estado"></span></p>
+          <p class="dato-reserva"><span>Fecha de inicio</span> <strong id="contrato-inicio"></strong></p>
+          <p class="dato-reserva"><span>Fecha de fin</span> <strong id="contrato-fin"></strong></p>
+          <p class="dato-reserva"><span>Cuota mensual</span> <strong id="contrato-cuota"></strong></p>
+          <p class="dato-reserva"><span>Fianza</span> <strong id="contrato-fianza"></strong></p>
+          <p class="dato-reserva"><span>Correo del inquilino</span> <strong id="contrato-email"></strong></p>
+          <p class="dato-reserva"><span>Teléfono del inquilino</span> <strong id="contrato-telefono"></strong></p>
+        </div>
+      </section>
+
+      <!-- 2.4 CONDICIONES PRINCIPALES (texto de ejemplo; el JavaScript escribe las dos primeras) -->
+      <section class="seccion-dashboard">
+        <div class="cabecera-seccion">
+          <h3>Condiciones principales</h3>
+        </div>
+        <ul class="lista-condiciones">
+          <li><strong>Duración:</strong> <span id="condicion-duracion"></span></li>
+          <li><strong>Pago de la renta:</strong> <span id="condicion-pago"></span></li>
+          <li><strong>Fianza:</strong> equivale a una mensualidad y se devuelve al terminar el contrato si el inmueble está en buen estado.</li>
+          <li><strong>Avisos:</strong> para no renovar el contrato hay que avisar con 30 días de antelación.</li>
+          <li><strong>Averías:</strong> el inquilino las comunica desde la sección de incidencias, y el propietario se encarga de las reparaciones importantes.</li>
+        </ul>
+      </section>
+
+      <!-- 2.5 DOCUMENTOS (el JavaScript crea las filas) -->
+      <section class="seccion-dashboard">
+        <div class="cabecera-seccion">
+          <h3>Documentos</h3>
+        </div>
+        <div class="tabla-contenedor">
+          <table class="tabla">
+            <thead>
+              <tr>
+                <th>Documento</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpo-tabla-documentos"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 2.6 MENSAJE DE "CONTRATO NO ENCONTRADO" (se enseña desde el JavaScript) -->
+    <p id="detalle-no-encontrado" class="sin-resultados" style="display:none;">
+      No se ha encontrado el contrato que buscas.
+    </p>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>
