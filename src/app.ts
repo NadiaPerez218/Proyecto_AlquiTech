@@ -2,6 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import inmuebleRoutes from './routes/inmuebleRoutes';
+import userRoutes from './routes/userRoutes';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 // Activamos endpoint
 
 app.use ('/api/inmuebles', inmuebleRoutes);
+app.use('/api/usuarios', userRoutes);
 
 const PORT =3000;
 app.listen(PORT, () => { 
