@@ -1,19 +1,11 @@
 import { Router } from 'express';
-import {
-	getInmuebles,
-	crearInmueble,
-	actualizarInmueble,
-	eliminarInmueble	
- } from '../controllers/inmuebleController';
+import { obtenerInmuebles } from '../controllers/inmuebleController';
 
 const router = Router ();
 
-//Definimos las rutas del CRUD de inmuebles
+//Ruta para obtener el catalogo de prueba
 
-router.get('/', getInmuebles);		// Leer todos
-router.post('/', crearInmueble);		// Crear nuevo
-router.put('/', actualizarInmueble);	// Actializar por ID
-router.delete('/', eliminarInmueble);	// Eliminar por ID
+router.get('/', obtenerInmuebles);		// Leer todos
 
 export default router;
 
