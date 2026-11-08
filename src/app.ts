@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import inmuebleRoutes from './routes/inmuebleRoutes';
 import userRoutes from './routes/userRoutes';
+import './config/db';
 
 const app = express();
 
