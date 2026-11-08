@@ -1,10 +1,10 @@
 
 import { Request, Response } from 'express'; 
- 
+import { Inmueble } from '../interfaces/inmueble.interface'; 
 
 export const obtenerInmuebles = async (req: Request, res: Response)=>{ 
 	try { 
-	const inmueblesMock = [ 
+	const inmueblesMock: Inmueble [] = [ 
 	{ 
 		id: 1, 
 		propietarioId: 101, 
