@@ -1,57 +1,36 @@
-import {Request, Response } from 'express';
-export const getInmuebles = (req: Request, res: Response) => {
-        const inmuebles = [
 
-        {
-                id: 1,
-                titulo: "Piso céntrico y luminoso",
-                direccion: "Calle Mayor 10",
-                ciudad: "Madrid",
-                precio: 850,
-                estado: "disponible"
-        },
-        {
-                id: 2,
-                titulo: "Estado reformado",
-                direccion: "Av. Diagonal 45",
-                ciudad: "Barcelona",
-                precio: 600,
-                estado: "disponible"     
- }
+import { Request, Response } from 'express'; 
+import { Inmueble } from '../interfaces/inmueble.interface'; 
 
+export const obtenerInmuebles = async (req: Request, res: Response)=>{ 
+	try { 
+	const inmueblesMock: Inmueble [] = [ 
+	{ 
+		id: 1, 
+		propietarioId: 101, 
+		titulo: "Piso en el centro", 
+		ciudad: "Madrid", 
+		habitaciones: 3, 
+		banos: 2, 
+		metrosCuadrados: 90, 
+		precioMensual: 950, 
+		estado: "Alquilado" 
+	}, 
+		{ 
+		id: 2, 
+		propietarioId: 102, 
+		titulo: "Apartamento luminoso", 
+		ciudad: "Barcelona", 
+		habitaciones: 2, 
+		banos: 1, 
+		metrosCuadrados: 65, 
+		precioMensual: 1100, 
+		estado: "Disponible" 
+	} 
+	]; 
 
-
-  ];
-        // Devolvemos el array directamente como JSON
-        res.json(inmuebles);
-};
-
-// Endpoint para crear inmueble
-
-export const crearInmueble = (req: Request, res: Response) =>{
-	res.json({	
-		mensaje: "Inmueble creado con éxito (simulado)",
-		inmueble: {
-		 id: 3, 
-		titulo: "casa con jardín",
-		precio: 1200
-		 }
-});
-};
-
-// Endpoint para actualizar un inmueble
-
-export const actualizarInmueble = (req: Request, res: Response) =>{ 
-        res.json({
-mensaje: `Inmueble con ID ${req.params.id} actualizado con éxito (silamulado)`
-	});
-};
-
-// Endpoint para eliminar un inmueble
-
-export const eliminarInmueble = (req: Request, res: Response) =>{
-        res.json({
-	 mensaje: `Inmueble con ID ${req.params.id} eliminado con éxito (simulado)`
-        });
-};
-
+	res.status(200).json(inmueblesMock); 
+	} catch (error){ 
+	res.status(500).json({ error: 'Error al obtener inmuebles' }); 
+	} 
+}; 

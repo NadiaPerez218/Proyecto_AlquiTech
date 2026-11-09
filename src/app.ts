@@ -1,8 +1,8 @@
-
 import express from 'express';
 import cors from 'cors';
 import inmuebleRoutes from './routes/inmuebleRoutes';
-import userRoutes from './routes/userRoutes';
+import usuarioRoutes from './routes/usuarioRoutes';
+import './config/db';
 
 const app = express();
 
@@ -14,11 +14,12 @@ app.use(express.json());
 // Activamos endpoint
 
 app.use ('/api/inmuebles', inmuebleRoutes);
-app.use('/api/usuarios', userRoutes);
+app.use('/api/usuarios', usuarioRoutes);
 
 const PORT =3000;
 app.listen(PORT, () => { 
-	console.log('Servidor backend corriendo en el puerto $PORT');
+	console.log(`Servidor backend corriendo en el puerto ${PORT}`);
 });
+export default app;
 
 
