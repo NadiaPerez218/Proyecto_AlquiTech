@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     AVISO LEGAL (aviso-legal.html)
+
+     Quién es el responsable de la web y las condiciones para usarla.
+     Se llega desde el enlace "Aviso legal" del pie de página.
+
+     BLOQUES:
+     1. Cabecera (logo, menú y botones)
+     2. Contenido principal
+        2.1 Título y fecha
+        2.2 Aviso de proyecto académico
+        2.3 Secciones del aviso legal
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Aviso legal</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="inmuebles.html">Inmuebles</a>
+        <a href="como-funciona.html">¿Cómo funciona?</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Botones -->
+      <div class="acceso">
+        <a class="boton boton-contorno" href="login.html">Iniciar sesión</a>
+        <a class="boton boton-blanco" href="registro.html">Registrarse</a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor pagina-estrecha pagina-legal">
+
+    <!-- 2.1 TÍTULO Y FECHA -->
+    <h1>Aviso legal</h1>
+    <p class="fecha-legal">Última actualización: 31/10/2026</p>
+
+    <!-- 2.2 AVISO DE PROYECTO ACADÉMICO -->
+    <p class="aviso-proyecto">
+      AlquiTech es un proyecto académico del ciclo de Desarrollo de Aplicaciones Web (DAW).
+      Todavía no es un servicio real: los inmuebles, las personas y los datos que aparecen son de ejemplo.
+    </p>
+
+    <!-- 2.3 SECCIONES DEL AVISO LEGAL -->
+    <section class="detalle-seccion">
+      <h2>1. Datos del responsable</h2>
+      <p>Esta web la ha creado el Grupo 2 del proyecto intermodular de 2.º de DAW, formado por Nadia Pérez, Edson Vilchez y Andrea Hernández.</p>
+      <p>Como es un proyecto académico, no hay una empresa detrás. Si la plataforma se pone en marcha, aquí aparecerán los datos de la empresa (razón social, NIF, domicilio y correo de contacto), como pide la Ley 34/2002 de servicios de la sociedad de la información (LSSI-CE).</p>
+    </section>
+
+    <section class="detalle-seccion">
+      <h2>2. Para qué sirve esta web</h2>
+      <p>AlquiTech es una plataforma para gestionar el alquiler de inmuebles entre propietarios e inquilinos. Desde ella se pueden publicar y buscar inmuebles, consultar contratos, controlar los pagos, avisar de incidencias y enviar mensajes.</p>
+    </section>
+
+    <section class="detalle-seccion">
+      <h2>3. Condiciones de uso</h2>
+      <p>Al usar la web, cada persona se compromete a:</p>
+      <ul class="lista-legal">
+        <li>Dar datos verdaderos al registrarse y mantenerlos al día.</li>
+        <li>Guardar su contraseña y no compartir su cuenta con otras personas.</li>
+        <li>No publicar anuncios falsos ni contenidos ofensivos o ilegales.</li>
+        <li>Tratar con respeto al resto de usuarios en los mensajes y las incidencias.</li>
+      </ul>
+      <p>Si alguien no cumple estas condiciones, se podrá bloquear su cuenta.</p>
+    </section>
+
+    <section class="detalle-seccion">
+      <h2>4. Propiedad intelectual</h2>
+      <p>El nombre, el logotipo, el diseño y el código de AlquiTech son del equipo del proyecto. No se pueden copiar ni usar para otros fines sin permiso.</p>
+      <p>Las fotografías y los textos de los anuncios de ejemplo solo sirven para enseñar cómo funciona la web.</p>
+    </section>
+
+    <section class="detalle-seccion">
+      <h2>5. Responsabilidad</h2>
+      <p>AlquiTech pone en contacto a propietarios e inquilinos y les ayuda a organizar el alquiler, pero no forma parte del contrato entre ellos. Cada propietario es responsable de que los datos de sus anuncios sean correctos.</p>
+      <p>Intentamos que la web funcione siempre bien, pero puede haber momentos en los que no esté disponible por tareas de mantenimiento o por problemas técnicos.</p>
+    </section>
+
+    <section class="detalle-seccion">
+      <h2>6. Ley aplicable</h2>
+      <p>Este aviso legal se rige por la legislación española. El tratamiento de los datos personales se explica en la <a href="privacidad.html">política de privacidad</a>.</p>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

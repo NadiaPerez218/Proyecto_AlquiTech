@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ====================================================================
+     MENSAJES DEL PROPIETARIO (mensajes-propietario.html)
+
+     Conversaciones del propietario con los inquilinos de sus inmuebles.
+     Se llega desde el menú del panel del propietario ("Mensajes")
+     o desde el enlace "Ver todos" de "Mensajes recientes".
+
+     BLOQUES:
+     1. Cabecera (logo, menú, saludo y menú de perfil)
+     2. Contenido principal
+        2.1 Título
+        2.2 Botones para elegir la conversación (uno por inquilino)
+        2.3 Conversación
+            - Datos de la conversación
+            - Mensajes (uno de los dos grupos está escondido)
+            - Formulario para escribir un mensaje nuevo
+     3. Pie de página
+     4. Acceso a las vistas de demo (provisional)
+     ==================================================================== -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlquiTech – Mensajes</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+
+  <!-- ==================== 1. CABECERA ==================== -->
+  <header>
+    <div class="contenedor cabecera">
+
+      <!-- Logo -->
+      <a class="logo" href="dashboard-propietario.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+
+      <!-- Menú -->
+      <nav>
+        <a href="dashboard-propietario.html">Inicio</a>
+        <a href="mis-inmuebles.html">Mis inmuebles</a>
+        <a href="contratos-propietario.html">Contratos</a>
+        <a href="pagos-propietario.html">Pagos</a>
+        <a href="incidencias-propietario.html">Incidencias</a>
+        <a class="activo" href="mensajes-propietario.html">Mensajes</a>
+      </nav>
+
+      <!-- Saludo y menú de perfil: el botón con las iniciales abre el submenú
+           (datos de la cuenta, Mi perfil y Cerrar sesión). Bloque 25 del JavaScript.
+           Si la persona ha puesto foto de perfil, el botón la enseña en lugar de las iniciales (bloque 26) -->
+      <div class="acceso">
+        <span class="saludo">Hola, <strong id="nombre-usuario">Carlos</strong></span>
+        <div class="menu-perfil" data-rol="propietario">
+          <button type="button" class="boton-perfil" id="boton-perfil" data-iniciales="CM" aria-expanded="false" aria-controls="submenu-perfil" aria-label="Menú de perfil" title="Menú de perfil">CM</button>
+          <div class="submenu-perfil" id="submenu-perfil" hidden>
+            <div class="datos-perfil">
+              <strong id="submenu-nombre">Carlos Martínez</strong>
+              <span id="submenu-email">carlos.martinez@correo.es</span>
+              <span class="insignia insignia-contorno">Cuenta de propietario</span>
+            </div>
+            <a href="perfil-propietario.html">Mi perfil</a>
+            <a class="cerrar-sesion" href="index.html">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ==================== 2. CONTENIDO PRINCIPAL ==================== -->
+  <main class="contenedor dashboard pagina-estrecha" id="mensajes-propietario">
+
+    <!-- 2.1 TÍTULO -->
+    <h1>Mensajes</h1>
+
+    <!-- 2.2 BOTONES PARA ELEGIR LA CONVERSACIÓN
+         data-conversacion: nombre del grupo de mensajes que se enseña
+         data-nombre y data-detalle: textos que se escriben en la cabecera de la conversación -->
+    <div class="pestanas-chat">
+      <button type="button" class="boton boton-secundario pestana activa" data-conversacion="juan"
+              data-nombre="Juan García" data-detalle="Inquilino · Piso en el centro, Madrid">Juan García</button>
+      <button type="button" class="boton boton-secundario pestana" data-conversacion="maria"
+              data-nombre="María López" data-detalle="Inquilina · Estudio reformado, Valencia">María López</button>
+    </div>
+
+    <!-- 2.3 CONVERSACIÓN -->
+    <section class="chat">
+
+      <!-- Datos de la conversación (el JavaScript los cambia al elegir otro inquilino) -->
+      <div class="chat-cabecera">
+        <h3 id="chat-nombre">Juan García</h3>
+        <p id="chat-detalle">Inquilino · Piso en el centro, Madrid</p>
+      </div>
+
+      <!-- Mensajes: "burbuja-recibida" son los del inquilino y "burbuja-enviada" los del propietario.
+           Los mensajes nuevos se añaden al final desde el JavaScript. -->
+      <div class="chat-mensajes" data-conversacion="juan">
+
+        <div class="burbuja burbuja-recibida">
+          <p>Buenos días, ¿podría revisar la gotera del baño esta semana?</p>
+          <span class="fecha-mensaje">02/05/2026</span>
+        </div>
+
+        <div class="burbuja burbuja-enviada">
+          <p>He recibido tu incidencia, en breve me pongo en contacto contigo.</p>
+          <span class="fecha-mensaje">03/05/2026</span>
+        </div>
+
+        <div class="burbuja burbuja-enviada">
+          <p>Buenos días, esta semana pasaré a revisar la gotera del baño.</p>
+          <span class="fecha-mensaje">05/05/2026</span>
+        </div>
+
+      </div>
+
+      <div class="chat-mensajes" data-conversacion="maria" style="display:none;">
+
+        <div class="burbuja burbuja-recibida">
+          <p>Buenas tardes, la calefacción del estudio no se enciende.</p>
+          <span class="fecha-mensaje">03/05/2026</span>
+        </div>
+
+        <div class="burbuja burbuja-enviada">
+          <p>Gracias por avisar, voy a llamar al técnico.</p>
+          <span class="fecha-mensaje">03/05/2026</span>
+        </div>
+
+        <div class="burbuja burbuja-recibida">
+          <p>Hola, la calefacción sigue sin funcionar correctamente.</p>
+          <span class="fecha-mensaje">04/05/2026</span>
+        </div>
+
+      </div>
+
+      <!-- Formulario para escribir un mensaje nuevo (se envía a la conversación que se está viendo) -->
+      <div class="chat-enviar">
+        <!-- novalidate: el navegador no muestra sus avisos; se usan los mensajes de nuestro JavaScript -->
+        <form id="formulario-mensaje" novalidate>
+
+          <div class="grupo-campo">
+            <label for="texto-mensaje">Escribe tu mensaje</label>
+            <textarea class="caja-texto caja-area" id="texto-mensaje" name="mensaje" placeholder="Escribe aquí tu mensaje para el inquilino"></textarea>
+            <span class="error" id="error-texto-mensaje"></span>
+          </div>
+
+          <button type="submit" class="boton boton-primario">Enviar mensaje</button>
+
+        </form>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==================== 3. PIE DE PÁGINA ==================== -->
+  <footer>
+    <div class="contenedor pie">
+      <a class="logo" href="index.html"><img src="../IMG/alquitech-logo.png" alt="AlquiTech"></a>
+      <p>© 2026 AlquiTech. Todos los derechos reservados.</p>
+      <nav>
+        <a href="aviso-legal.html">Aviso legal</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ==================== 4. VISTAS DE DEMO (provisional) ==================== -->
+  <!-- Borrar este bloque cuando el login lleve a cada panel -->
+  <div class="demo">
+    <span>Vistas de demo:</span>
+    <a href="dashboard-propietario.html">Propietario</a>
+    <a href="dashboard-inquilino.html">Inquilino</a>
+  </div>
+
+  <script src="../JS/scripts.js"></script>
+</body>
+</html>

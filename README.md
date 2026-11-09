@@ -32,6 +32,7 @@ Cada versión vive en su propia carpeta, para conservar el historial de cómo ha
 | [`v0.5`](v0.5) | Añade las pantallas del inquilino: mi contrato, pagos, incidencias (listado y formulario) y mensajes. |
 | [`v0.6`](v0.6) | Añade las pantallas del propietario: contratos, pagos, incidencias y mensajes. |
 | [`v0.7`](v0.7) | Frontend completo: detalles de incidencia y contrato, editar inmueble, solicitudes de alquiler con solvencia en estrellas, ¿Cómo funciona?, páginas legales y contacto, recuperar contraseña, justificantes, confirmar pagos y perfil con menú y foto. |
+| [`v0.8`](v0.8) | Correcciones de la fase de testeo: la validación del DNI comprueba la letra de control y la caja de demo ya no tapa contenido en el móvil. |
 
 ### Estructura de cada versión
 
@@ -46,7 +47,9 @@ vX.X/
 
 ---
 
-## Páginas de la versión actual (v0.7)
+## Páginas de la versión actual (v0.8)
+
+La v0.8 tiene las mismas páginas que la v0.7, con las correcciones de la fase de testeo.
 
 **Parte pública**
 
@@ -91,7 +94,7 @@ vX.X/
 
 ## Tecnologías
 
-**Frontend (v0.7):** HTML5, CSS3 y JavaScript sin librerías. Tipografías Montserrat (títulos) y Lato (texto) de Google Fonts. La foto de perfil se guarda de momento en el navegador con `localStorage`.
+**Frontend (v0.8):** HTML5, CSS3 y JavaScript sin librerías. Tipografías Montserrat (títulos) y Lato (texto) de Google Fonts. La foto de perfil se guarda de momento en el navegador con `localStorage`.
 
 **Previstas para la siguiente fase:** base de datos MySQL, con autenticación segura.
 
@@ -114,5 +117,6 @@ No hace falta instalar nada.
 - [x] Pantallas del inquilino: contrato, pagos, incidencias y mensajes (v0.5)
 - [x] Pantallas del propietario: contratos, pagos, incidencias y mensajes (v0.6)
 - [x] Frontend completo: detalles, solicitudes con solvencia, páginas legales y contacto, perfil de usuario (v0.7)
+- [x] Fase de testeo del frontend: banco de pruebas y corrección de las incidencias encontradas (v0.8)
 - [ ] Conexión con el backend y la base de datos
 - [ ] Despliegue
