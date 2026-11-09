@@ -1,25 +1,15 @@
 import express from 'express';
-import cors from 'cors';
-import inmuebleRoutes from './routes/inmuebleRoutes';
-import usuarioRoutes from './routes/usuarioRoutes';
-import './config/db';
+import usuarioRoutes from './routes/usuario.routes';
 
 const app = express();
 
-//Habilitamos CORS, para que el fronted(en otro puerto o dominio) pueda pedir datos
-
-app.use(cors());
+// Middleware fundamental para que el servidor entienda el JSON que envías por POST
 app.use(express.json());
 
-// Activamos endpoint
-
-app.use ('/api/inmuebles', inmuebleRoutes);
+// Enlace de las rutas
 app.use('/api/usuarios', usuarioRoutes);
 
-const PORT =3000;
-app.listen(PORT, () => { 
-	console.log(`Servidor backend corriendo en el puerto ${PORT}`);
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor backend corriendo en el puerto ${PORT}`);
 });
-export default app;
-
-
